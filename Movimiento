@@ -1,0 +1,14 @@
+El movimiento será modelado uasndo el patrón Strategy, para definir en qué direcciones puede moverse cada entidad y a qué velocidad.
+Cada entidad tendrá asignada una EstrategiaMovimiento y un método mover() que es delegado a su estrategia.
+Las estrategias concretas implementan mover() según corresponda para la Entidad que la usa.
+
+En el thread que maneja el juego:
+   cada cierta cantidad de tiempo
+      para cada NaveInfectada ni en ListaEnemigos
+         ni.mover()
+      para cada premio pr presente en el mapa
+         pr.mover()
+    
+En la clase Gui habrá un oyente para las teclas que mueven al jugador, de la forma:
+   jugador.getEstrategiaMovimiento.setDireccion <- direccion correspondiente a tecla presionada
+   jugador.mover()
