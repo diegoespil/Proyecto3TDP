@@ -7,22 +7,23 @@ import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
-public class VisitorNaveJugador extends Visitor {
+public class VisitorProyectilEnemigo extends Visitor{
 
-	public VisitorNaveJugador(Entidad e) {
+	public VisitorProyectilEnemigo(Entidad e) {
 		super(e);
 	}
 	
 	public void visitNaveInfectada(NaveInfectada nave) {}
 	
-	public void visitNaveJugador(NaveJugador nave) {}
-	
-	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
-
-	public void visitProyectilJugador(ProyectilJugador proyectil) {}
-	
-	public void visitPremio(Premio premio) {
-		premio.activar();
+	public void visitNaveJugador(NaveJugador nave) {
+		this.entidad.daniar(nave);
 	}
 	
+	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
+	
+    public void visitProyectilJugador(ProyectilJugador proyectil) {}
+
+	public void visitPremio(Premio premio) {}
+	
 }
+

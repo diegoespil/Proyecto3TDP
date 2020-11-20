@@ -4,7 +4,8 @@ import logica.entidad.Entidad;
 import logica.naves.NaveInfectada;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
-import logica.proyectil.Proyectil;
+import logica.proyectil.ProyectilEnemigo;
+import logica.proyectil.ProyectilJugador;
 
 public class VisitorNaveInfectada extends Visitor {
 
@@ -13,19 +14,16 @@ public class VisitorNaveInfectada extends Visitor {
 		super(e);
 	}
 	
-	public void visit(NaveInfectada nave) {
-		
-	};
+	public void visitNaveInfectada(NaveInfectada nave) {}
 	
-	public void visit(NaveJugador nave) {
-		
-	};
+	public void visitNaveJugador(NaveJugador nave) {
+		this.entidad.daniar(nave);
+	}
 	
-	public void visit(Proyectil proyectil) {
-		
-	};
+	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
+	
+    public void visitProyectilJugador(ProyectilJugador proyectil) {}
 
-	public void visit(Premio premio) {
-		
-	};
+	public void visitPremio(Premio premio) {}
+	
 }
