@@ -1,0 +1,5 @@
+-El thread debe conocer solo una colección de entidades, no de enemigos/premios.
+-Juego podría tener un visitor que modifique un contador cuando visita enemigos, pero no haga nada con otras Entidades. Sería
+una forma de llevar la cuenta de cuántos enemigos quedan vivos, para evitar un instanceof de Entidad.
+-Generación del mapa sería solo insertar la nave del jugador y definir de qué forma irán apareciendo las naves enemigas, esto
+es, si todas en el mismo lugar o posición al azar, o cada cuánto tiempo se inserta la siguiente.
