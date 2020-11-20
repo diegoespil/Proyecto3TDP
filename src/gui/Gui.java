@@ -1,16 +1,17 @@
 package gui;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class Gui extends JFrame {
 
 	private JPanel contentPane;
-	private Background background;
+	private JPanel panelFondo;
 
 	/**
 	 * Launch the application.
@@ -42,9 +43,12 @@ public class Gui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		background = new Background();
-		background.setBounds(12, -633, 500, 1250);
-		contentPane.add(background);
+	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo.gif"));
+	    JLabel label = new JLabel(icon);
+	    panelFondo = new JPanel();
+	    panelFondo.setBounds(12,12,500,600);
+	    panelFondo.add(label);
+	    contentPane.add(panelFondo);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(517, 0, 171, 617);
