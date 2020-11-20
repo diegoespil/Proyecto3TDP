@@ -7,6 +7,7 @@ public class EntidadGrafica {
 	private ImageIcon [] graficos;
 	
 	public EntidadGrafica() {
+	
 		
 	}
 	
