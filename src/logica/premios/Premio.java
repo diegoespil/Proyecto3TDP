@@ -1,6 +1,12 @@
 package logica.premios;
 
-public abstract class Premio {
+import logica.entidad.Entidad;
 
-	public abstract void activar();
+public abstract class Premio extends Entidad {
+
+	public Premio(int x, int y) {
+		super(x, y);
+		
+	}
+
 }

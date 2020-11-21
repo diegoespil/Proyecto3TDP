@@ -4,18 +4,19 @@ import javax.swing.ImageIcon;
 
 public class EntidadGrafica {
 	
-	private ImageIcon [] graficos;
+	protected String [] graficos;
+	protected ImageIcon graficoActual;
 	
 	public EntidadGrafica() {
-	
+		
 		
 	}
 	
 	public ImageIcon getGrafico() {
-		return null;
+		return graficoActual;
 	}
 	
 	public void setGrafico(ImageIcon grafico) {
-		
+		this.graficoActual = grafico;
 	}
 }

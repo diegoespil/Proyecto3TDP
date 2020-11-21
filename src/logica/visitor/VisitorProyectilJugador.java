@@ -14,7 +14,7 @@ public class VisitorProyectilJugador extends Visitor {
 	}
 	
 	public void visitNaveInfectada(NaveInfectada nave) {
-		this.entidad.daniar(nave);
+		this.entidad.golpearEnemigo(nave);;
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}

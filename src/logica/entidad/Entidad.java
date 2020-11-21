@@ -4,34 +4,61 @@ import logica.visitor.Visitor;
 
 public abstract class Entidad {
 
-	private Visitor visitor;
-	private EntidadGrafica entidadGrafica;
-	private int velocidad;
-	private int posX;
-	private int posY;
+	protected Visitor visitor;
+	protected EntidadGrafica entidadGrafica;
+	protected int posX;
+	protected int posY;
+	protected int vida;
 	
-	public Entidad() {
-		
+	public Entidad(int x,int y) {
+		this.visitor = null;
+		this.entidadGrafica = new EntidadGrafica();
+		this.posX = x;
+		this.posY = y;
+		this.vida = 100;
 	}
 	
-	abstract public void mover();
-	
-	public int getPosX() {
+	protected int getPosX() {
 		return this.posX;
 	}
 	
-	public int getPosY() {
+	protected int getPosY() {
 		return this.posY;
 	}
 	
-	protected int getVelocidad() {
-		// TODO Auto-generated method stub
-		return this.velocidad;
+	protected EntidadGrafica getGrafica() {
+		return entidadGrafica;
 	}
 	
-	protected void setVelocidad(int i) {
-		this.velocidad = i;
+	protected Visitor getVisitor() {
+		return visitor;
+	}
+
+	protected void setPosX(int x) {
+		this.posX = x;
 	}
 	
-	abstract public void accept(Visitor v);
+	protected void setPosY(int y) {
+		this.posY = y;
+	}
+	
+	protected void setVisitor(Visitor v) {
+		this.visitor = v;
+	}
+	
+	public void recibirDanio(int danio) {
+		this.vida = vida-danio;
+	}
+	
+	public abstract void accept(Visitor v);
+
+	public abstract void golpearJugador(Entidad j);
+	
+	public abstract void golpearEnemigo(Entidad e);
+	
+	public abstract void golpearPowerUp(Entidad p);
+
+	public abstract void golpearDisparoJugador(Entidad d);
+	
+	public abstract void golpearDisparoEnemigo(Entidad d);
 }

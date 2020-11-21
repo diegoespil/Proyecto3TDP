@@ -5,20 +5,21 @@ import logica.entidad.Entidad;
 
 public abstract class Nave extends Entidad{
 
-	private int vida;
-	private Arma arma;
+	protected Arma arma;
+	protected int cargaViral;
 	
-	public Nave(Arma arma){
-		this.vida = 100;
+	public Nave(int x, int y,Arma arma,int carga){
+		super(x,y);
 		this.arma = arma;
+		this.cargaViral = carga;
 	}
 	
-	public int getVida() {
-		return this.vida;
+	public int getCargaViral() {
+		return this.cargaViral;
 	}
 	
-	public void setVida(int vida) {
-		this.vida = vida;
+	public void setCargaViral(int carga) {
+		this.cargaViral = carga;
 	}
 	
 	

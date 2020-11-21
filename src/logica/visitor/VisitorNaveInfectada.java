@@ -9,7 +9,6 @@ import logica.proyectil.ProyectilJugador;
 
 public class VisitorNaveInfectada extends Visitor {
 
-	
 	public VisitorNaveInfectada(Entidad e) {
 		super(e);
 	}
@@ -17,7 +16,7 @@ public class VisitorNaveInfectada extends Visitor {
 	public void visitNaveInfectada(NaveInfectada nave) {}
 	
 	public void visitNaveJugador(NaveJugador nave) {
-		this.entidad.daniar(nave);
+		this.entidad.golpearJugador(nave);
 	}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}

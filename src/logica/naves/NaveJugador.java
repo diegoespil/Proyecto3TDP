@@ -1,23 +1,42 @@
 package logica.naves;
 
-import logica.arma.Arma;
+import logica.arma.ArmaJugador;
+import logica.entidad.Entidad;
 import logica.visitor.Visitor;
 
 public class NaveJugador extends Nave{
 
-	public NaveJugador(Arma arma) {
-		super(arma);
+
+
+	public NaveJugador(int x, int y) {
+		//El 15 seria el danio, igual se puede cambiar
+		super(x, y, new ArmaJugador(15), 0);
 	}
 
-	@Override
+/*
 	public void mover() {
 		// TODO Auto-generated method stub
 		
 	}
+*/
 
-	@Override
 	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
+		v.visitNaveJugador(this);
 		
 	}
+
+	public void golpearJugador(Entidad j) {}
+
+	public void golpearEnemigo(Entidad e) {
+		this.arma.disparar(this.posX, this.posY);
+	}
+
+	public void golpearPowerUp(Entidad p) {
+	//activar el powerUp
+	}
+
+	public void golpearDisparoJugador(Entidad d) {}
+
+	public void golpearDisparoEnemigo(Entidad d) {}
+
 }

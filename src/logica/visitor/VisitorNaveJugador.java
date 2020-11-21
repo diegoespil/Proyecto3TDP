@@ -14,7 +14,7 @@ public class VisitorNaveJugador extends Visitor {
 	}
 	
 	public void visitNaveInfectada(NaveInfectada nave) {}
-	
+
 	public void visitNaveJugador(NaveJugador nave) {}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
@@ -22,7 +22,7 @@ public class VisitorNaveJugador extends Visitor {
 	public void visitProyectilJugador(ProyectilJugador proyectil) {}
 	
 	public void visitPremio(Premio premio) {
-		premio.activar();
+		this.entidad.golpearPowerUp(premio);
 	}
 	
 }

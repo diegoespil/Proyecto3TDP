@@ -1,33 +1,44 @@
 package logica.naves;
 
-import logica.arma.Arma;
+import logica.arma.ArmaEnemigo;
+import logica.entidad.Entidad;
 import logica.visitor.Visitor;
 
 public class Alpha extends NaveInfectada {
-	
-	public Alpha(Arma arma) {
-		super(arma);
+
+	public Alpha(int x, int y){
+		super(x, y, new ArmaEnemigo(30),100, 10, 5);
 	}
 
-	@Override
+	/*
 	public void mover() {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
+*/
 	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
+		v.visitNaveInfectada(this);
+	}
+/*	
+	public void duplicarVelocidad() {
+		if (this.getCargaViral() < 20)
+			
+			this.setVelocidad(this.getVelocidad() * 2);
+			
+	}
+*/
+	public void golpearJugador(Entidad j) {
+	//Plantear como atacaria la nave infectada, basicamente verificar el rango
+	// y ver si ataca con el arma o directamente te ataca.	
 		
 	}
-	
-	public void duplicarVelocidad() {
-		if (this.getVida() < 20)
-			this.setVelocidad(this.getVelocidad() * 2);
-	}
 
-	
+	public void golpearEnemigo(Entidad e) {}
 
-	
+	public void golpearPowerUp(Entidad p) {}
+
+	public void golpearDisparoJugador(Entidad d) {}
+
+	public void golpearDisparoEnemigo(Entidad d) {}
 
 }
