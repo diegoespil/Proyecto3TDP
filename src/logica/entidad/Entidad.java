@@ -30,7 +30,7 @@ public abstract class Entidad {
 		return entidadGrafica;
 	}
 	
-	protected Visitor getVisitor() {
+	public Visitor getVisitor() {
 		return visitor;
 	}
 
