@@ -1,10 +1,12 @@
 package logica.entidad;
 
+import logica.movimiento.Movimiento;
 import logica.visitor.Visitor;
 
 public abstract class Entidad {
 
 	protected Visitor visitor;
+	protected Movimiento mov;
 	protected EntidadGrafica entidadGrafica;
 	protected int posX;
 	protected int posY;
@@ -30,6 +32,10 @@ public abstract class Entidad {
 		return entidadGrafica;
 	}
 	
+	public Movimiento getMovimiento() {
+		return mov;
+	}
+	
 	protected Visitor getVisitor() {
 		return visitor;
 	}
@@ -48,6 +54,14 @@ public abstract class Entidad {
 	
 	public void recibirDanio(int danio) {
 		this.vida = vida-danio;
+	}
+	
+	public void mover() {
+		this.mov.mover();
+	}
+	
+	public void setMovimiento(Movimiento m) {
+		mov = m;
 	}
 	
 	public abstract void accept(Visitor v);

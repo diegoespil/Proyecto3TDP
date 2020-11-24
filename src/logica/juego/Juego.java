@@ -12,7 +12,7 @@ public class Juego {
 	private Mapa mapa;
 	private Gui gui;
 	private Nivel nivel;
-	private Entidad jugador;
+	private NaveJugador jugador;
 	
 	private static final int WIDTH = 600;
 	private static final int HEIGHT = 600;
@@ -24,7 +24,7 @@ public class Juego {
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT);
 	}
 
-	public Entidad getJugador() {
+	public NaveJugador getJugador() {
 		// TODO Auto-generated method stub
 		return jugador;
 	}
