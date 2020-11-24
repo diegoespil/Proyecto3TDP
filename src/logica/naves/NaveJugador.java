@@ -2,6 +2,7 @@ package logica.naves;
 
 import logica.arma.ArmaJugador;
 import logica.entidad.Entidad;
+import logica.entidad.EntidadGraficaJugador;
 import logica.visitor.Visitor;
 
 public class NaveJugador extends Nave{
@@ -10,7 +11,7 @@ public class NaveJugador extends Nave{
 
 	public NaveJugador(int x, int y) {
 		//El 15 seria el danio, igual se puede cambiar
-		super(x, y, new ArmaJugador(15), 0);
+		super(x, y, new ArmaJugador(15), 0, new EntidadGraficaJugador());
 	}
 
 /*

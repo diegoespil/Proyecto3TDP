@@ -10,23 +10,23 @@ public abstract class Entidad {
 	protected int posY;
 	protected int vida;
 	
-	public Entidad(int x,int y) {
+	public Entidad(int x,int y, EntidadGrafica entidadGrafica) {
 		this.visitor = null;
-		this.entidadGrafica = new EntidadGrafica();
+		this.entidadGrafica = entidadGrafica;
 		this.posX = x;
 		this.posY = y;
 		this.vida = 100;
 	}
 	
-	protected int getPosX() {
+	public int getPosX() {
 		return this.posX;
 	}
 	
-	protected int getPosY() {
+	public int getPosY() {
 		return this.posY;
 	}
 	
-	protected EntidadGrafica getGrafica() {
+	public EntidadGrafica getGrafica() {
 		return entidadGrafica;
 	}
 	

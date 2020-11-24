@@ -2,14 +2,15 @@ package logica.naves;
 
 import logica.arma.Arma;
 import logica.entidad.Entidad;
+import logica.entidad.EntidadGrafica;
 
 public abstract class Nave extends Entidad{
 
 	protected Arma arma;
 	protected int cargaViral;
 	
-	public Nave(int x, int y,Arma arma,int carga){
-		super(x,y);
+	public Nave(int x, int y,Arma arma,int carga, EntidadGrafica entidadGrafica){
+		super(x,y,entidadGrafica);
 		this.arma = arma;
 		this.cargaViral = carga;
 	}
