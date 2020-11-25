@@ -5,8 +5,8 @@ import logica.visitor.Visitor;
 
 public class ProyectilEnemigo extends Proyectil {
 
-	public ProyectilEnemigo(int v, int x, int y, int d) {
-		super(v, x, y);
+	public ProyectilEnemigo(int x, int y, int d) {
+		super(x, y, d);
 	}
 
 	public void accept(Visitor v) {

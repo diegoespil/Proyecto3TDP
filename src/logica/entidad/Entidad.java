@@ -20,12 +20,20 @@ public abstract class Entidad {
 		this.vida = 100;
 	}
 	
+	public Entidad(int x, int y, Object entidadGrafica2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getPosX() {
 		return this.posX;
 	}
 	
 	public int getPosY() {
 		return this.posY;
+	}
+	
+	public int getVida() {
+		return vida;
 	}
 	
 	public EntidadGrafica getGrafica() {
@@ -46,6 +54,10 @@ public abstract class Entidad {
 	
 	protected void setPosY(int y) {
 		this.posY = y;
+	}
+	
+	public void setVida(int v) {
+		vida = v;
 	}
 	
 	protected void setVisitor(Visitor v) {

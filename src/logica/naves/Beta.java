@@ -1,13 +1,16 @@
 package logica.naves;
 
 import logica.arma.ArmaEnemigo;
+import logica.arma.ArmaEnemigoBeta;
 import logica.entidad.Entidad;
+import logica.movimiento.MovimientoVertical;
 import logica.visitor.Visitor;
 
 public class Beta extends NaveInfectada {
 
 	public Beta(int x, int y) {
-		super(x, y, new ArmaEnemigo(15), 100, 5, 10);
+		super(x, y, new ArmaEnemigoBeta(15), 100, 5, 10);
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
 	}
 	
 	/*
