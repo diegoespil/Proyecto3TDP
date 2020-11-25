@@ -1,6 +1,7 @@
 package logica.naves;
 
 import logica.arma.Arma;
+import logica.movimiento.MovimientoVertical;
 
 public abstract class NaveInfectada extends Nave{
 	
@@ -11,6 +12,7 @@ public abstract class NaveInfectada extends Nave{
 		super(x, y, arma, carga);
 		this.rango = rango;
 		this.resistenciaDanio = resistencia;
+		setMovimiento(new MovimientoVertical(this,1));
 	}
 	
 	public int getRango() {
