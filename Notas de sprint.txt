@@ -1,5 +1,12 @@
+Primer sprint:
 -El thread debe conocer solo una colección de entidades, no de enemigos/premios.
 -Juego podría tener un visitor que modifique un contador cuando visita enemigos, pero no haga nada con otras Entidades. Sería
 una forma de llevar la cuenta de cuántos enemigos quedan vivos, para evitar un instanceof de Entidad.
 -Generación del mapa sería solo insertar la nave del jugador y definir de qué forma irán apareciendo las naves enemigas, esto
 es, si todas en el mismo lugar o posición al azar, o cada cuánto tiempo se inserta la siguiente.
+
+Segundo sprint:
+-Para que los enemigos nuevos no queden atrás del fondo, habría que tener un panel separado para fondo y otro para entidades.
+-Corregir el comportamiento de los visitor para que no dependan del metodo afectar(), y lo manejen ellos directamente.
+-En vez de tener un atributo vida para todas las entidades, debería haber un método estaEnJuego() o similar. Que se settee eso
+en false en vez de hacer vida = 0, y el hilo les pregunte a las entidades si están en juego para ver cuáles eliminar.
