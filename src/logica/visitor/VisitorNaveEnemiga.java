@@ -7,9 +7,9 @@ import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
-public class VisitorNaveInfectada extends Visitor {
+public class VisitorNaveEnemiga extends Visitor {
 
-	public VisitorNaveInfectada(Entidad e) {
+	public VisitorNaveEnemiga(Entidad e) {
 		super(e);
 	}
 	

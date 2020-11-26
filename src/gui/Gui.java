@@ -60,6 +60,8 @@ public class Gui extends JFrame {
 		contentPane.setLayout(null);
 		
 		iniciarJuego();
+		mente = new Mente(juego);
+		mente.start();
 		
 	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo.gif"));
 	    JLabel label = new JLabel(icon);
@@ -70,12 +72,10 @@ public class Gui extends JFrame {
 
 		setContentPane(contentPane);
 		
-		mente = new Mente(juego);
-		mente.start();
+		
 	}
 	
 	public void agregarEntidad(JLabel label) {
-		System.out.println("posicion label x "+label.getBounds().x+" y "+label.getBounds().y);
 		contentPane.add(label);
 		this.validate();
 		this.repaint();
@@ -109,12 +109,7 @@ public class Gui extends JFrame {
 			}
 			
 			public void keyReleased(KeyEvent e) {
-				
-						System.out.println("key released");
-						//jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
 						jugador.getGrafica().actualizar(0);
-						//jugador.mover();
-					
 			}
 		});
 		

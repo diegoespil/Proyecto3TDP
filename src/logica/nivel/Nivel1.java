@@ -6,19 +6,20 @@ import java.util.Random;
 import logica.entidad.Entidad;
 import logica.factory.naveEnemiga.FabricaNaveEnemiga;
 import logica.factory.premio.FabricaPremio;
+import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 
 public class Nivel1 extends Nivel {
 
-	public Nivel1() {
-		super(16,4);
+	public Nivel1(Juego j) {
+		super(16,4,j);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Nivel nextLevel() {
 		// TODO Auto-generated method stub
-		return new Nivel2(24,4);
+		return new Nivel2(this.juego);
 	}
 
 	@Override
@@ -28,6 +29,7 @@ public class Nivel1 extends Nivel {
 	}
 
 	public LinkedList<Entidad> getTanda() {
+		System.out.println("Cantidad de tandas "+cantidadTandas);
 		this.cantidadTandas--;
 		Tanda tanda = null;
 		if (cantidadTandas >= 0) {
@@ -36,8 +38,6 @@ public class Nivel1 extends Nivel {
 		} else return null;
 	}
 	
-	public LinkedList<Entidad> getNavesEnemigas(){
-		return this.navesEnemigas;
-	}
+	
 	
 }

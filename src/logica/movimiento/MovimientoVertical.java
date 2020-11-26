@@ -6,8 +6,8 @@ import logica.entidad.Entidad;
 
 public class MovimientoVertical extends Movimiento {
 	
-	public static final int ABAJO = -1;
-	public static final int ARRIBA = 1;
+	public static final int ABAJO = 1;
+	public static final int ARRIBA = -1;
 	
 	public MovimientoVertical(Entidad e, int d) {
 		super(e, d);
@@ -16,6 +16,10 @@ public class MovimientoVertical extends Movimiento {
 	public void mover() {
 		JLabel lbl = this.entidad.getGrafica().getLabel();
 		lbl.setBounds(lbl.getX(), lbl.getY()  + direccion * this.entidad.getVelocidad(), lbl.getWidth(), lbl.getHeight());
+		this.entidad.setPosY(lbl.getY()+direccion*this.entidad.getVelocidad());
+		if (this.entidad.getPosY() >= 650)
+			this.entidad.morir();
 	}
+				
 
 }

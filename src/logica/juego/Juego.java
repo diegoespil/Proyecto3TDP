@@ -26,8 +26,8 @@ public class Juego {
 	public Juego(Gui gui) {
 		this.gui = gui;
 		//this.mapa = new Mapa();
-		this.nivel = new Nivel1();
-		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42,5);
+		this.nivel = new Nivel1(this);
+		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42,5,this);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
 		agregarJugador();
@@ -50,7 +50,8 @@ public class Juego {
 	public void inicializarEntidades() {
 		if (nivel != null) {
 			LinkedList<Entidad> naves = nivel.getTanda();
-			if (naves != null) {
+			System.out.println("Naves size "+naves.size());
+			if (naves != null) {	
 				for (Entidad e: naves) {
 					entidades.add(e);
 					gui.agregarEntidad(e.getGrafica().getLabel());
@@ -70,7 +71,6 @@ public class Juego {
 	}
 	
 	public void detectarColisiones() {
-		
 		for (int i = 0; i < entidades.size();i++) {
 			Entidad e1 = entidades.get(i);
 			hayColision(e1,jugador);
@@ -81,9 +81,12 @@ public class Juego {
 	}
 
 	private void hayColision(Entidad e1, Entidad e2) {
+		System.out.println("Pos x "+e1.getPosX()+"pos y "+e1.getPosY()+"ancho "+e1.getGrafica().getGrafico().getIconWidth()+" alto "+e1.getGrafica().getGrafico().getIconHeight());
+		System.out.println("Pos x "+e2.getPosX()+"pos y "+e2.getPosY()+"ancho "+e2.getGrafica().getGrafico().getIconWidth()+" alto "+e2.getGrafica().getGrafico().getIconHeight());
 		Rectangle r1 = new Rectangle(e1.getPosX()+2,e1.getPosY()+2,e1.getGrafica().getGrafico().getIconWidth()-2,e1.getGrafica().getGrafico().getIconHeight()-2);
 		Rectangle r2 = new Rectangle(e2.getPosX()+2,e2.getPosY()+2,e2.getGrafica().getGrafico().getIconWidth()-2,e2.getGrafica().getGrafico().getIconHeight()-2);
 		if (r1.intersects(r2)) {
+			System.out.println("Colision");
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
 		}
@@ -104,6 +107,17 @@ public class Juego {
 	public boolean hayEntidades() {
 		// TODO Auto-generated method stub
 		return entidades.size()>0;
+	}
+
+	public void quitarEntidad(Entidad entidad) {
+		entidadesAEliminar.add(entidad);
+	}
+	
+	public void removerEntidades() {
+		for (Entidad e: entidadesAEliminar) {
+			gui.remove(e.getGrafica().getLabel());
+			entidades.remove(e);
+		}
 	}
 
 }

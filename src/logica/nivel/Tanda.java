@@ -19,7 +19,7 @@ public class Tanda {
 	}
 	
 	public LinkedList<Entidad> getTanda(){
-		int cont = 0;
+		
 		Random r= new Random();
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
@@ -31,7 +31,6 @@ public class Tanda {
 			ne.setPosY(posY);
 			ne.getGrafica().setBounds(posX, posY, ne.getGrafica().getWidth(), ne.getGrafica().getHeight());
 			naves.add((Entidad) ne);
-			cont++;
 		}
 		
 		return naves;

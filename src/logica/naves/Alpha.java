@@ -3,9 +3,11 @@ package logica.naves;
 import logica.arma.ArmaEnemigo;
 import logica.arma.ArmaEnemigoAlpha;
 import logica.entidad.Entidad;
+import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
 import logica.movimiento.MovimientoVertical;
 import logica.visitor.Visitor;
+import logica.visitor.VisitorNaveEnemiga;
 
 public class Alpha extends NaveEnemiga {
 
@@ -13,9 +15,10 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveEnemigaLeft.gif",
 			path+subPath+"/naveEnemigaRight.gif"};
 	
-	public Alpha(int x, int y){
-		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 5, graficos);
+	public Alpha(int x, int y, Juego juego){
+		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 5, graficos, juego);
 		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
+		setVisitor(new VisitorNaveEnemiga(this));
 	}
 
 	/*

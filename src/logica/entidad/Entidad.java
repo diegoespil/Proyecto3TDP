@@ -2,6 +2,7 @@ package logica.entidad;
 
 import javax.swing.JComponent;
 
+import logica.juego.Juego;
 import logica.movimiento.Movimiento;
 import logica.visitor.Visitor;
 
@@ -14,20 +15,18 @@ public abstract class Entidad {
 	protected int posY;
 	protected int vida;
 	protected int velocidad;
+	private Juego juego;
 
 	protected static final String path = "/resources/img";
 	
-	public Entidad(int x,int y, String [] graficos,int vel) {
+	public Entidad(int x,int y, String [] graficos,int vel, Juego j) {
+		this.juego = j;
 		this.visitor = null;
 		this.posX = x;
 		this.posY = y;
 		this.entidadGrafica = new EntidadGrafica(graficos,this);
 		this.vida = 100;
 		this.velocidad = vel;
-	}
-	
-	public Entidad(int x, int y, Object entidadGrafica2) {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getPosX() {
@@ -66,6 +65,10 @@ public abstract class Entidad {
 		vida = v;
 	}
 	
+	public void setJuego(Juego j) {
+		this.juego = j;
+	}
+	
 	protected void setVisitor(Visitor v) {
 		this.visitor = v;
 	}
@@ -101,5 +104,10 @@ public abstract class Entidad {
 	public abstract void golpearDisparoJugador(Entidad d);
 	
 	public abstract void golpearDisparoEnemigo(Entidad d);
+
+	public void morir() {
+		this.vida = 0;
+		juego.quitarEntidad(this);
+	}
 
 }

@@ -12,6 +12,7 @@ import logica.factory.premio.FabricaPrecioso;
 import logica.factory.premio.FabricaPremio;
 import logica.factory.premio.FabricaSuperArma;
 import logica.factory.premio.FabricaTemporal;
+import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 
 public abstract class Nivel {
@@ -25,22 +26,22 @@ public abstract class Nivel {
 	protected FabricaPremio fabricaPrecioso;
 	protected FabricaPremio fabricaTemporal;
 	
-	protected LinkedList<Entidad> navesEnemigas;
 	protected LinkedList<Entidad> premios;
 	
 	protected int cantidadTandas;
+	protected Juego juego;
 	
-	public Nivel(int enemigos, int cantTandas) {
+	public Nivel(int enemigos, int cantTandas, Juego juego) {
+		this.juego = juego;
 		this.enemigos = enemigos;
-		this.fabricaNaveAlpha = new FabricaAlpha();
-		this.fabricaNaveBeta = new FabricaBeta();
+		this.fabricaNaveAlpha = new FabricaAlpha(this);
+		this.fabricaNaveBeta = new FabricaBeta(this);
 		this.fabricaCuarentena = new FabricaCuarentena();
 		this.fabricaPocion = new FabricaPocion();
 		this.fabricaPrecioso = new FabricaPrecioso();
 		this.fabricaSuperArma = new FabricaSuperArma();
 		this.fabricaTemporal = new FabricaTemporal();
 		
-		this.navesEnemigas = new LinkedList<Entidad>();
 		this.premios = new LinkedList<Entidad>();
 		
 		this.cantidadTandas = cantTandas;
@@ -78,7 +79,10 @@ public abstract class Nivel {
 	
 	abstract public int getCantidadEnemigos();
 
-	abstract public LinkedList<Entidad> getNavesEnemigas();
-
 	public abstract LinkedList<Entidad> getTanda();
+
+	public Juego getJuego() {
+		// TODO Auto-generated method stub
+		return juego;
+	}
 }

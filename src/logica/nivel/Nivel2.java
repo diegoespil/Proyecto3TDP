@@ -3,11 +3,12 @@ package logica.nivel;
 import java.util.LinkedList;
 
 import logica.entidad.Entidad;
+import logica.juego.Juego;
 
 public class Nivel2 extends Nivel {
 
-	public Nivel2(int enemigos, int cantTandas) {
-		super(enemigos, cantTandas);
+	public Nivel2(Juego juego) {
+		super(30, 5,juego);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -21,12 +22,6 @@ public class Nivel2 extends Nivel {
 	public int getCantidadEnemigos() {
 		// TODO Auto-generated method stub
 		return 0;
-	}
-
-	@Override
-	public LinkedList<Entidad> getNavesEnemigas() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
