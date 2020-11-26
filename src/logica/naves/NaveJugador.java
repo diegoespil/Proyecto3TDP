@@ -2,7 +2,6 @@ package logica.naves;
 
 import logica.arma.ArmaJugador;
 import logica.entidad.Entidad;
-import logica.entidad.EntidadGraficaJugador;
 import logica.movimiento.MovimientoHorizontal;
 import logica.visitor.Visitor;
 

@@ -2,7 +2,6 @@ package logica.naves;
 
 import logica.arma.Arma;
 import logica.entidad.EntidadGrafica;
-import logica.entidad.EntidadGraficaEnemiga;
 import logica.movimiento.MovimientoVertical;
 
 public abstract class NaveEnemiga extends Nave{

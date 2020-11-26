@@ -18,7 +18,7 @@ public class Nivel1 extends Nivel {
 	@Override
 	public Nivel nextLevel() {
 		// TODO Auto-generated method stub
-		return new Nivel2();
+		return new Nivel2(24,4);
 	}
 
 	@Override
