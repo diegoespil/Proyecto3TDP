@@ -26,12 +26,20 @@ public abstract class Entidad {
 		this.velocidad = vel;
 	}
 	
+	public Entidad(int x, int y, Object entidadGrafica2) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getPosX() {
 		return this.posX;
 	}
 	
 	public int getPosY() {
 		return this.posY;
+	}
+	
+	public int getVida() {
+		return vida;
 	}
 	
 	public EntidadGrafica getGrafica() {
@@ -52,6 +60,10 @@ public abstract class Entidad {
 	
 	public void setPosY(int y) {
 		this.posY = y;
+	}
+	
+	public void setVida(int v) {
+		vida = v;
 	}
 	
 	protected void setVisitor(Visitor v) {

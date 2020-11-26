@@ -1,6 +1,7 @@
 package logica.naves;
 
 import logica.arma.ArmaEnemigo;
+import logica.arma.ArmaEnemigoAlpha;
 import logica.entidad.Entidad;
 import logica.movimiento.MovimientoHorizontal;
 import logica.movimiento.MovimientoVertical;
@@ -13,9 +14,8 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveEnemigaRight.gif"};
 	
 	public Alpha(int x, int y){
-		
-		super(x, y, new ArmaEnemigo(30),100, 10, 5, graficos);
-		System.out.println("Creo Alpha");
+		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 5, graficos);
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
 	}
 
 	/*

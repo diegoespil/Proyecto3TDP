@@ -1,6 +1,8 @@
 package logica.arma;
 
+import logica.movimiento.MovimientoVertical;
 import logica.proyectil.Proyectil;
+import logica.proyectil.ProyectilJugador;
 
 public class ArmaJugador extends Arma{
 
@@ -9,7 +11,9 @@ public class ArmaJugador extends Arma{
 	}
 
 	public Proyectil disparar(int x, int y) {
-		return null;
+		ProyectilJugador disparo = new ProyectilJugador(x,y,danio);
+		disparo.setMovimiento(new MovimientoVertical(disparo, MovimientoVertical.ARRIBA));
+		return disparo;
 	}
 
 }

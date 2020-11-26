@@ -6,8 +6,8 @@ import logica.entidad.Entidad;
 
 public class MovimientoVertical extends Movimiento {
 	
-	public static final int ABAJO = 1;
-	public static final int ARRIBA = -1;
+	public static final int ABAJO = -1;
+	public static final int ARRIBA = 1;
 	
 	public MovimientoVertical(Entidad e, int d) {
 		super(e, d);
