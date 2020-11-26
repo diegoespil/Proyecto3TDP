@@ -13,7 +13,8 @@ public class VisitorNaveJugador extends Visitor {
 		super(e);
 	}
 	
-	public void visitNaveInfectada(NaveEnemiga nave) {}
+	public void visitNaveEnemiga(NaveEnemiga nave) {
+	}
 
 	public void visitNaveJugador(NaveJugador nave) {}
 	
@@ -22,7 +23,7 @@ public class VisitorNaveJugador extends Visitor {
 	public void visitProyectilJugador(ProyectilJugador proyectil) {}
 	
 	public void visitPremio(Premio premio) {
-		this.entidad.golpearPowerUp(premio);
+		premio.activar();
 	}
 	
 }

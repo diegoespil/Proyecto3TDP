@@ -15,7 +15,7 @@ public abstract class Visitor {
 		this.entidad = e;
 	 }
 	
-	public abstract void visitNaveInfectada(NaveEnemiga nave);
+	public abstract void visitNaveEnemiga(NaveEnemiga nave);
 	
 	public abstract void visitNaveJugador(NaveJugador nave);
 	

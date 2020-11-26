@@ -81,8 +81,8 @@ public class Juego {
 	}
 
 	private void hayColision(Entidad e1, Entidad e2) {
-		System.out.println("Pos x "+e1.getPosX()+"pos y "+e1.getPosY()+"ancho "+e1.getGrafica().getGrafico().getIconWidth()+" alto "+e1.getGrafica().getGrafico().getIconHeight());
-		System.out.println("Pos x "+e2.getPosX()+"pos y "+e2.getPosY()+"ancho "+e2.getGrafica().getGrafico().getIconWidth()+" alto "+e2.getGrafica().getGrafico().getIconHeight());
+		//System.out.println("Pos x "+e1.getPosX()+"pos y "+e1.getPosY()+"ancho "+e1.getGrafica().getGrafico().getIconWidth()+" alto "+e1.getGrafica().getGrafico().getIconHeight());
+		//System.out.println("Pos x "+e2.getPosX()+"pos y "+e2.getPosY()+"ancho "+e2.getGrafica().getGrafico().getIconWidth()+" alto "+e2.getGrafica().getGrafico().getIconHeight());
 		Rectangle r1 = new Rectangle(e1.getPosX()+2,e1.getPosY()+2,e1.getGrafica().getGrafico().getIconWidth()-2,e1.getGrafica().getGrafico().getIconHeight()-2);
 		Rectangle r2 = new Rectangle(e2.getPosX()+2,e2.getPosY()+2,e2.getGrafica().getGrafico().getIconWidth()-2,e2.getGrafica().getGrafico().getIconHeight()-2);
 		if (r1.intersects(r2)) {

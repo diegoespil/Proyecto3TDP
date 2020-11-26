@@ -6,6 +6,7 @@ import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
 import logica.movimiento.MovimientoVertical;
+import logica.movimiento.MovimientoVerticalAcelerado;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveEnemiga;
 
@@ -16,40 +17,18 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveEnemigaRight.gif"};
 	
 	public Alpha(int x, int y, Juego juego){
-		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 5, graficos, juego);
-		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
-		setVisitor(new VisitorNaveEnemiga(this));
+		//Constructor de NaveEnemiga con velocidad 5 y danio 30
+		super(x, y, 5, graficos, juego, new ArmaEnemigoAlpha(30));
+		setDanio(30);
+		setVida(50);
 	}
-
-	/*
-	public void mover() {
-		// TODO Auto-generated method stub
+	
+	//redefine setVida de Nave para incluir chequeo de cuando tiene que duplicar velocidad
+	public void setVida(int vida) {
+		this.vida = vida;
+		if (getVida() <= 10 && estaEnJuego())
+			setMovimiento(new MovimientoVerticalAcelerado(this, MovimientoVertical.ABAJO));
 		
 	}
-*/
-	public void accept(Visitor v) {
-		v.visitNaveInfectada(this);
-	}
-/*	
-	public void duplicarVelocidad() {
-		if (this.getCargaViral() < 20)
-			
-			this.setVelocidad(this.getVelocidad() * 2);
-			
-	}
-*/
-	public void golpearJugador(Entidad j) {
-	//Plantear como atacaria la nave infectada, basicamente verificar el rango
-	// y ver si ataca con el arma o directamente te ataca.	
-		
-	}
-
-	public void golpearEnemigo(Entidad e) {}
-
-	public void golpearPowerUp(Entidad p) {}
-
-	public void golpearDisparoJugador(Entidad d) {}
-
-	public void golpearDisparoEnemigo(Entidad d) {}
 
 }

@@ -12,7 +12,8 @@ public class ArmaEnemigoAlpha extends ArmaEnemigo {
 	}
 
 	public Proyectil disparar(int x, int y) {
-		ProyectilEnemigoAlpha disparo = new ProyectilEnemigoAlpha(x,y,danio);
+		//el parametro null del final es el Juego, que habría que sacar
+		ProyectilEnemigoAlpha disparo = new ProyectilEnemigoAlpha(x, y, getVelocidad(), getDanio(), null);
 		disparo.setMovimiento(new MovimientoVertical(disparo, MovimientoVertical.ABAJO));
 		return disparo;
 	}

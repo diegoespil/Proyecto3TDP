@@ -8,5 +8,9 @@ public abstract class Premio extends Entidad {
 		super(x, y);
 		
 	}
+	
+	public void activar() {
+		
+	}
 
 }
