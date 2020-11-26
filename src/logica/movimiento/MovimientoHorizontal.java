@@ -16,9 +16,12 @@ public class MovimientoHorizontal extends Movimiento {
 	}
 	
 	public void mover() {
+		//this.entidad.getGrafica().actualizar(direccion);
 		JLabel lbl = this.entidad.getGrafica().getLabel();
-		//el 5 debería reemplazarse por un getVelocidad()
-		lbl.setBounds(lbl.getX() + direccion * 5, lbl.getY() , lbl.getWidth(), lbl.getHeight());
+		if (direccion == 1 && lbl.getX()+lbl.getWidth() <= 600)
+			lbl.setBounds(lbl.getX() + direccion * this.entidad.getVelocidad(), lbl.getY() , lbl.getWidth(), lbl.getHeight());
+		else if (direccion == -1 && lbl.getX() >= 0)
+			lbl.setBounds(lbl.getX() + direccion * this.entidad.getVelocidad(), lbl.getY() , lbl.getWidth(), lbl.getHeight());
 	}
 
 }

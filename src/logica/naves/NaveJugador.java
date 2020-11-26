@@ -8,12 +8,16 @@ import logica.visitor.Visitor;
 
 public class NaveJugador extends Nave{
 
+	private static final String subPath = "/jugador";
+	private static final String [] graficos = new String[] {path+subPath+"/jugador.gif",
+			path+subPath+"/jugadorLeft.gif",
+			path+subPath+"/jugadorRight.gif"};
 
-
-	public NaveJugador(int x, int y) {
+	public NaveJugador(int x, int y, int vel) {
 		//El 15 seria el danio, igual se puede cambiar
-		super(x, y, new ArmaJugador(15), 0, new EntidadGraficaJugador());
+		super(x, y, new ArmaJugador(15), 0, graficos,vel);
 		setMovimiento( new MovimientoHorizontal(this,1) );
+		//this.getGrafica().actualizar(0);
 	}
 
 /*

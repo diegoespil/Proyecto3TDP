@@ -9,8 +9,8 @@ public abstract class Nave extends Entidad{
 	protected Arma arma;
 	protected int cargaViral;
 	
-	public Nave(int x, int y,Arma arma,int carga, EntidadGrafica entidadGrafica){
-		super(x,y,entidadGrafica);
+	public Nave(int x, int y,Arma arma,int carga, String [] graficos,int vel){
+		super(x,y,graficos,vel);
 		this.arma = arma;
 		this.cargaViral = carga;
 	}

@@ -1,7 +1,7 @@
 package logica.visitor;
 
 import logica.entidad.Entidad;
-import logica.naves.NaveInfectada;
+import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
@@ -15,7 +15,7 @@ public abstract class Visitor {
 		this.entidad = e;
 	 }
 	
-	public abstract void visitNaveInfectada(NaveInfectada nave);
+	public abstract void visitNaveInfectada(NaveEnemiga nave);
 	
 	public abstract void visitNaveJugador(NaveJugador nave);
 	

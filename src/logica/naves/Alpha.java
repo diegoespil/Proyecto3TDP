@@ -2,12 +2,20 @@ package logica.naves;
 
 import logica.arma.ArmaEnemigo;
 import logica.entidad.Entidad;
+import logica.movimiento.MovimientoHorizontal;
+import logica.movimiento.MovimientoVertical;
 import logica.visitor.Visitor;
 
-public class Alpha extends NaveInfectada {
+public class Alpha extends NaveEnemiga {
 
+	private static final String [] graficos = new String[] {path+subPath+"/naveEnemiga.gif",
+			path+subPath+"/naveEnemigaLeft.gif",
+			path+subPath+"/naveEnemigaRight.gif"};
+	
 	public Alpha(int x, int y){
-		super(x, y, new ArmaEnemigo(30),100, 10, 5);
+		
+		super(x, y, new ArmaEnemigo(30),100, 10, 5, graficos);
+		System.out.println("Creo Alpha");
 	}
 
 	/*

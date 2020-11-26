@@ -24,6 +24,7 @@ public class Gui extends JFrame {
 	private JPanel contentPane;
 	private JPanel panelFondo;
 	private Juego juego;
+	private Mente mente;
 
 	/**
 	 * Launch the application.
@@ -69,6 +70,15 @@ public class Gui extends JFrame {
 
 		setContentPane(contentPane);
 		
+		mente = new Mente(juego);
+		mente.start();
+	}
+	
+	public void agregarEntidad(JLabel label) {
+		System.out.println("posicion label x "+label.getBounds().x+" y "+label.getBounds().y);
+		contentPane.add(label);
+		this.validate();
+		this.repaint();
 	}
 
 	private void iniciarJuego() {
@@ -76,24 +86,35 @@ public class Gui extends JFrame {
 		//JLabel labelJugador = new JLabel();
 		//labelJugador.setBounds(300, 549, 31, 42);
 		NaveJugador jugador = juego.getJugador();
-		jugador.getGrafica().actualizar(0);
-		JLabel labelJugador = jugador.getGrafica().getLabel();
-		ImageIcon iconJugador = juego.getJugador().getGrafica().getGrafico();
-		labelJugador.setIcon(iconJugador);
+		//jugador.getGrafica().actualizar(0);
+		//JLabel labelJugador = jugador.getGrafica().getLabel();
+		//ImageIcon iconJugador = juego.getJugador().getGrafica().getGrafico();
+		//labelJugador.setIcon(iconJugador);
 		//iconJugador.setImageObserver(labelJugador);
-		contentPane.add(labelJugador);
+		//contentPane.add(labelJugador);
 		
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 					jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
+					jugador.getGrafica().actualizar(1);
 					jugador.mover();
 				}
 				else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
 					jugador.getMovimiento().setDireccion(MovimientoHorizontal.DERECHA);
+					jugador.getGrafica().actualizar(2);
 					jugador.mover();
 				}
+			}
+			
+			public void keyReleased(KeyEvent e) {
+				
+						System.out.println("key released");
+						//jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
+						jugador.getGrafica().actualizar(0);
+						//jugador.mover();
+					
 			}
 		});
 		

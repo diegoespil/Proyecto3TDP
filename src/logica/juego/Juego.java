@@ -18,20 +18,49 @@ public class Juego {
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
+	private boolean gameOver = false;
 	
 	private static final int WIDTH = 600;
 	private static final int HEIGHT = 600;
 	
 	public Juego(Gui gui) {
 		this.gui = gui;
-		this.mapa = new Mapa();
+		//this.mapa = new Mapa();
 		this.nivel = new Nivel1();
-		this.jugador = new NaveJugador(WIDTH/2, HEIGHT);
+		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42,5);
+		this.entidades = new LinkedList<Entidad>();
+		this.entidadesAEliminar = new LinkedList<Entidad>();
+		agregarJugador();
 		inicializarEntidades();
+		
+		//agregarEntidades();
 	}
 
-	private void inicializarEntidades() {
-		// TODO Auto-generated method stub
+	public void agregarEntidades() {
+		for (Entidad e: entidades)
+			gui.agregarEntidad(e.getGrafica().getLabel());
+		
+	}
+
+	private void agregarJugador() {
+		gui.agregarEntidad(jugador.getGrafica().getLabel());
+		
+	}
+
+	public void inicializarEntidades() {
+		if (nivel != null) {
+			LinkedList<Entidad> naves = nivel.getTanda();
+			if (naves != null) {
+				for (Entidad e: naves) {
+					entidades.add(e);
+					gui.agregarEntidad(e.getGrafica().getLabel());
+				}
+			} else {
+				nivel = nivel.nextLevel();
+			}
+		} else {
+			gameOver = true;
+		}
 		
 	}
 
@@ -58,6 +87,23 @@ public class Juego {
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
 		}
+	}
+
+	public boolean isGameOver() {
+		// TODO Auto-generated method stub
+		return this.gameOver;
+	}
+
+	public void moverEntidades() {
+		// TODO Auto-generated method stub
+		for (Entidad e: entidades) {
+			e.mover();
+		}
+	}
+
+	public boolean hayEntidades() {
+		// TODO Auto-generated method stub
+		return entidades.size()>0;
 	}
 
 }

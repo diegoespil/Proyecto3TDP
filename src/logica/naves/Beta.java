@@ -4,7 +4,7 @@ import logica.arma.ArmaEnemigo;
 import logica.entidad.Entidad;
 import logica.visitor.Visitor;
 
-public class Beta extends NaveInfectada {
+public class Beta extends NaveEnemiga {
 
 	public Beta(int x, int y) {
 		super(x, y, new ArmaEnemigo(15), 100, 5, 10);
