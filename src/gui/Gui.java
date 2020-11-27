@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -21,7 +22,7 @@ import java.awt.event.KeyAdapter;
 
 public class Gui extends JFrame {
 
-	private JPanel contentPane;
+	private JLayeredPane contentPane;
 	private JPanel panelFondo;
 	private Juego juego;
 	private Mente mente;
@@ -54,7 +55,7 @@ public class Gui extends JFrame {
 		setSize(600,650);
 		setLocationRelativeTo(null);
 		
-		contentPane = new JPanel();
+		contentPane = new JLayeredPane();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBounds(0,0,600,630);
 		contentPane.setLayout(null);
@@ -68,7 +69,7 @@ public class Gui extends JFrame {
 	    label.setBounds(0,0,600,617);
 	    icon.setImageObserver(label);
 	    
-	    contentPane.add(label);
+	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
 
 		setContentPane(contentPane);
 		
@@ -76,7 +77,7 @@ public class Gui extends JFrame {
 	}
 	
 	public void agregarEntidad(JLabel label) {
-		contentPane.add(label);
+		contentPane.add(label, JLayeredPane.DRAG_LAYER);
 		this.validate();
 		this.repaint();
 	}
