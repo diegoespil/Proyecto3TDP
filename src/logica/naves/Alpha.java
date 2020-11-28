@@ -16,7 +16,7 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveEnemigaRight.gif"};
 	
 	public Alpha(int x, int y, Juego juego){
-		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 5, graficos, juego);
+		super(x, y, new ArmaEnemigoAlpha(30),100, 10, 10, graficos, juego);
 		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
 		setVisitor(new VisitorNaveEnemiga(this));
 	}

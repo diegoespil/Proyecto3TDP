@@ -54,7 +54,7 @@ public class Juego {
 			if (naves != null) {	
 				for (Entidad e: naves) {
 					entidades.add(e);
-					gui.agregarEntidad(e.getGrafica().getLabel());
+					gui.agregarEntidad(e.getGrafica());
 				}
 			} else {
 				nivel = nivel.nextLevel();
@@ -119,5 +119,7 @@ public class Juego {
 			entidades.remove(e);
 		}
 	}
+	
+	
 
 }
