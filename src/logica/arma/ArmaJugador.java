@@ -11,7 +11,8 @@ public class ArmaJugador extends Arma{
 	}
 
 	public Proyectil disparar(int x, int y) {
-		ProyectilJugador disparo = new ProyectilJugador(x,y,danio);
+		//el parametro null del final es el Juego, que habría que sacar
+		ProyectilJugador disparo = new ProyectilJugador(x, y, getVelocidad(), getDanio(), null);
 		disparo.setMovimiento(new MovimientoVertical(disparo, MovimientoVertical.ARRIBA));
 		return disparo;
 	}

@@ -8,21 +8,29 @@ import logica.juego.Juego;
 public abstract class Nave extends Entidad{
 
 	protected Arma arma;
-	protected int cargaViral;
+	protected int vida; 
+	protected int danio;
 	
-	public Nave(int x, int y,Arma arma,int carga, String [] graficos,int vel,Juego juego){
+	public Nave(int x, int y, String [] graficos,int vel,Juego juego, Arma arma){
 		super(x,y,graficos,vel,juego);
 		this.arma = arma;
-		this.cargaViral = carga;
 	}
 	
-	public int getCargaViral() {
-		return this.cargaViral;
+	public int getVida() {
+		return this.vida;
 	}
 	
-	public void setCargaViral(int carga) {
-		this.cargaViral = carga;
+	public int getDanio() {
+		return danio;
 	}
 	
+	public void setVida(int vida) {
+		this.vida = vida;
+		if (vida <= 0) setEnJuego(false);
+	}
+	
+	public void setDanio(int danio) {
+		this.danio= danio;
+	}
 	
 }

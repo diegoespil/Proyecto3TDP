@@ -13,7 +13,7 @@ public class VisitorPremio extends Visitor {
 		super(e);
 	}
 	
-	public void visitNaveInfectada(NaveEnemiga nave) {}
+	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
 	public void visitNaveJugador(NaveJugador nave) {}
 	

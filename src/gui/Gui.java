@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -22,9 +23,11 @@ import java.awt.event.KeyAdapter;
 
 public class Gui extends JFrame {
 
+
+	private JLayeredPane contentPane;
 	private Juego juego;
 	private Mente mente;
-	private JLabel fondo;
+//	private JLabel fondo;
 
 	/**
 	 * Launch the application.
@@ -49,26 +52,56 @@ public class Gui extends JFrame {
 	 */
 	public Gui() {
 		
-		fondo = new JLabel();
-		fondo.setIcon(new ImageIcon(Gui.class.getResource("/resources/img/fondo/fondo.gif")));
-		fondo.setBounds(0,0,600,617);
-		fondo.setLayout(null);
-		setContentPane(fondo);
-		iniciarJuego();
-		mente = new Mente(juego);
-		mente.start();
-	    pack();
+//Segunda opcion para iniciar la gui
+//		fondo = new JLabel();
+//		fondo.setIcon(new ImageIcon(Gui.class.getResource("/resources/img/fondo/fondo.gif")));
+//		fondo.setBounds(0,0,600,617);
+//		fondo.setLayout(null);
+//		setContentPane(fondo);
+//		iniciarJuego();
+//		mente = new Mente(juego);
+//		mente.start();
+//	    pack();
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+//		setSize(600,650);
+//		setLocationRelativeTo(null);
+//=======
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setSize(600,650);
 		setLocationRelativeTo(null);
+		
+		contentPane = new JLayeredPane();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBounds(0,0,600,630);
+		contentPane.setLayout(null);
+		
+		iniciarJuego();
+		mente = new Mente(juego);
+		mente.start();
+		
+	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo.gif"));
+	    JLabel label = new JLabel(icon);
+	    label.setBounds(0,0,600,617);
+	    icon.setImageObserver(label);
+	    
+	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
+
+		setContentPane(contentPane);
+		
+		
 	}
 	
 	
 
 	public void agregarEntidad(JLabel label) {
-		fondo.add(label);
-		validate();
-		repaint();
+		
+//Segunda opcion para agregar entidades
+//		fondo.add(label);
+//=======
+		contentPane.add(label, JLayeredPane.DRAG_LAYER);
+		this.validate();
+		this.repaint();
 	}
 
 	private void iniciarJuego() {
@@ -96,4 +129,5 @@ public class Gui extends JFrame {
 		validate();
 		repaint();
 	}
+
 }

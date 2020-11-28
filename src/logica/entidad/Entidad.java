@@ -13,8 +13,8 @@ public abstract class Entidad {
 	protected EntidadGrafica entidadGrafica;
 	protected int posX;
 	protected int posY;
-	protected int vida;
 	protected int velocidad;
+	protected boolean enJuego;
 	private Juego juego;
 
 	protected static final String path = "/resources/img";
@@ -25,8 +25,8 @@ public abstract class Entidad {
 		this.posX = x;
 		this.posY = y;
 		this.entidadGrafica = new EntidadGrafica(graficos,this);
-		this.vida = 100;
 		this.velocidad = vel;
+		enJuego = true;
 	}
 
 	public int getPosX() {
@@ -37,8 +37,8 @@ public abstract class Entidad {
 		return this.posY;
 	}
 	
-	public int getVida() {
-		return vida;
+	public boolean estaEnJuego() {
+		return enJuego;
 	}
 	
 	public EntidadGrafica getGrafica() {
@@ -61,8 +61,8 @@ public abstract class Entidad {
 		this.posY = y;
 	}
 	
-	public void setVida(int v) {
-		vida = v;
+	public void setEnJuego(boolean esta) {
+		this.enJuego = esta;
 	}
 	
 	public void setJuego(Juego j) {
@@ -71,10 +71,6 @@ public abstract class Entidad {
 	
 	protected void setVisitor(Visitor v) {
 		this.visitor = v;
-	}
-	
-	public void recibirDanio(int danio) {
-		this.vida = vida-danio;
 	}
 	
 	public void mover() {
@@ -95,18 +91,8 @@ public abstract class Entidad {
 	
 	public abstract void accept(Visitor v);
 
-	public abstract void golpearJugador(Entidad j);
-	
-	public abstract void golpearEnemigo(Entidad e);
-	
-	public abstract void golpearPowerUp(Entidad p);
-
-	public abstract void golpearDisparoJugador(Entidad d);
-	
-	public abstract void golpearDisparoEnemigo(Entidad d);
-
 	public void morir() {
-		this.vida = 0;
+		enJuego = false;
 		juego.quitarEntidad(this);
 	}
 

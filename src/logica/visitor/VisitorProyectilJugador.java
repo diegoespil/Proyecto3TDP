@@ -9,12 +9,13 @@ import logica.proyectil.ProyectilJugador;
 
 public class VisitorProyectilJugador extends Visitor {
 
-	public VisitorProyectilJugador(Entidad e) {
+	public VisitorProyectilJugador(ProyectilJugador e) {
 		super(e);
 	}
 	
-	public void visitNaveInfectada(NaveEnemiga nave) {
-		this.entidad.golpearEnemigo(nave);;
+	public void visitNaveEnemiga(NaveEnemiga nave) {
+		ProyectilJugador miProyectil = (ProyectilJugador) this.entidad;
+		nave.setVida( nave.getVida() - miProyectil.getDanio() );
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}

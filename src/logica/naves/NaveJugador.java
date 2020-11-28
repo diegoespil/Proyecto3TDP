@@ -16,36 +16,16 @@ public class NaveJugador extends Nave{
 
 	public NaveJugador(int x, int y, int vel,Juego juego) {
 		//El 15 seria el danio, igual se puede cambiar
-		super(x, y, new ArmaJugador(15), 0, graficos,vel,juego);
+		super(x, y, graficos,vel,juego,  new ArmaJugador(15));
 		setMovimiento( new MovimientoHorizontal(this,1) );
 		setVisitor(new VisitorNaveJugador(this));
-		//this.getGrafica().actualizar(0);
+		setDanio(15);
+		setVida(100);
 	}
-
-/*
-	public void mover() {
-		// TODO Auto-generated method stub
-		
-	}
-*/
 
 	public void accept(Visitor v) {
 		v.visitNaveJugador(this);
 		
 	}
-
-	public void golpearJugador(Entidad j) {}
-
-	public void golpearEnemigo(Entidad e) {
-		this.arma.disparar(this.posX, this.posY);
-	}
-
-	public void golpearPowerUp(Entidad p) {
-	//activar el powerUp
-	}
-
-	public void golpearDisparoJugador(Entidad d) {}
-
-	public void golpearDisparoEnemigo(Entidad d) {}
 
 }
