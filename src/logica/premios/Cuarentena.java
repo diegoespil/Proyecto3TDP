@@ -1,28 +1,26 @@
 package logica.premios;
 
-import logica.entidad.Entidad;
+import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
 
 public class Cuarentena extends Temporal {
 
-	public Cuarentena(int x, int y, int tiempo) {
-		super(x, y, tiempo);
+	//esto es hasta que tengamos la imagen.
+	protected static final String[] graficos=null;
+	protected static final int tiempo = 5;	
+	
+	public Cuarentena(int x, int y) {
+		super(x, y, graficos, tiempo);
 	}
 
 	public void accept(Visitor v) {
 		v.visitPremio(this);	
 	}
 
-	public void golpearJugador(Entidad j) {
+	@Override
+	public void activar(NaveJugador nj) {
+		// TODO Auto-generated method stub
 		
 	}
-
-	public void golpearEnemigo(Entidad e) {}
-
-	public void golpearPowerUp(Entidad p) {}
-
-	public void golpearDisparoJugador(Entidad d) {}
-	
-	public void golpearDisparoEnemigo(Entidad d) {}
 
 }

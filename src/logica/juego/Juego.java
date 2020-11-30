@@ -5,14 +5,12 @@ import java.util.LinkedList;
 
 import gui.Gui;
 import logica.entidad.Entidad;
-import logica.mapa.Mapa;
 import logica.naves.NaveJugador;
 import logica.nivel.Nivel;
 import logica.nivel.Nivel1;
 
 public class Juego {
 	
-	private Mapa mapa;
 	private Gui gui;
 	private Nivel nivel;
 	private static LinkedList<Entidad> entidades;
@@ -30,7 +28,7 @@ public class Juego {
 		System.out.println("Gui "+gui);
 		//this.mapa = new Mapa();
 		this.nivel = new Nivel1(this);
-		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42,5,this);
+		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
 		agregarJugador();
