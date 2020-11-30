@@ -1,5 +1,7 @@
 package logica.naves;
 
+import javax.swing.JLabel;
+
 import logica.arma.Arma;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
@@ -30,4 +32,12 @@ public abstract class NaveEnemiga extends Nave{
 		v.visitNaveEnemiga(this);
 	}
 	
+	public void setPosY(int y) {
+		this.posY = y;
+		if (y >= Juego.HEIGHT) {
+			this.posY = 0;
+			JLabel lbl = this.getGrafica().getLabel();
+			lbl.setBounds(lbl.getX(), 0, lbl.getWidth(), lbl.getHeight());
+		}
+	}
 }

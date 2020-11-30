@@ -14,4 +14,9 @@ public class ProyectilJugador extends Proyectil {
 		v.visitProyectilJugador(this);	
 	}
 
+	public void setPosY(int y) {
+		this.posY = y;
+		if (y <= 0) setEnJuego(false);
+	}
+	
 }

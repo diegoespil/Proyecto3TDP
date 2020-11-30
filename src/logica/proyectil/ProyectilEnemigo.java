@@ -13,5 +13,10 @@ public class ProyectilEnemigo extends Proyectil {
 	public void accept(Visitor v) {
 		v.visitProyectilEnemigo(this);
 	}
+	
+	public void setPosY(int y) {
+		this.posY = y;
+		if (y >= Juego.HEIGHT) setEnJuego(false);
+	}
 
 }

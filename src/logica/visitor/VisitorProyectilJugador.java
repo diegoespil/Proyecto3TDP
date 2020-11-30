@@ -16,6 +16,7 @@ public class VisitorProyectilJugador implements Visitor {
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		nave.setVida( nave.getVida() - proyectil.getDanio() );
+		proyectil.setEnJuego(false);
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}

@@ -12,7 +12,7 @@ public class MovimientoVerticalAcelerado extends MovimientoVertical {
 
 	public void mover() {
 		JLabel lbl = this.entidad.getGrafica().getLabel();
-		//el 5 debería reemplazarse por un getVelocidad()
-		lbl.setBounds(lbl.getX(), lbl.getY()  + direccion * 5 * 2, lbl.getWidth(), lbl.getHeight());
+		lbl.setBounds(lbl.getX(), lbl.getY()  + direccion * this.entidad.getVelocidad() * 2, lbl.getWidth(), lbl.getHeight());
+		this.entidad.setPosY(lbl.getY()+direccion*this.entidad.getVelocidad() * 2);
 	}
 }
