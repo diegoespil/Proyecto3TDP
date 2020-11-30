@@ -1,13 +1,11 @@
 package logica.proyectil;
 
-import logica.entidad.Entidad;
-import logica.juego.Juego;
 import logica.visitor.Visitor;
 
 public class ProyectilEnemigo extends Proyectil {
 
-	public ProyectilEnemigo(int x, int y, int v, int d, Juego j) {
-		super(x, y, v, d, j);
+	public ProyectilEnemigo(int x, int y, int v, int d,String [] graficos) {
+		super(x, y, v, d, graficos);
 	}
 
 	public void accept(Visitor v) {

@@ -1,24 +1,24 @@
 package logica.naves;
 
-import logica.arma.ArmaEnemigo;
-import logica.arma.ArmaEnemigoBeta;
-import logica.entidad.Entidad;
-import logica.juego.Juego;
-import logica.movimiento.MovimientoVertical;
-import logica.visitor.Visitor;
+import logica.proyectil.Proyectil;
 
 public class Beta extends NaveEnemiga {
 
-	//Cambiar graficos
-	private static final String [] graficos = new String[] {path+subPath+"/naveEnemiga.gif",
-			path+subPath+"/naveEnemigaLeft.gif",
-			path+subPath+"/naveEnemigaRight.gif"};
+	private static final String [] graficos = new String[] {path+subPath+"/naveBeta.gif",
+			path+subPath+"/naveBetaLeft.gif",
+			path+subPath+"/naveBetaRight.gif"};
 	
-	public Beta(int x, int y,Juego juego) {
-		//Constructor de NaveEnemiga con velocidad 5 y danio 15
-		super(x, y, 5,graficos, juego,  new ArmaEnemigoBeta(15));
-		setDanio(15);
+	public Beta(int x, int y) {
+
+		super(x, y, 5,graficos);
 		setVida(100);
+		setDanio(30);
+	}
+
+	@Override
+	public Proyectil disparar() {
+		
+		return null;
 	}
 	
 }

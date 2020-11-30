@@ -1,7 +1,5 @@
 package logica.entidad;
 
-import javax.swing.JComponent;
-
 import logica.juego.Juego;
 import logica.movimiento.Movimiento;
 import logica.visitor.Visitor;
@@ -15,12 +13,10 @@ public abstract class Entidad {
 	protected int posY;
 	protected int velocidad;
 	protected boolean enJuego;
-	private Juego juego;
 
 	protected static final String path = "/resources/img";
 	
-	public Entidad(int x,int y, String [] graficos,int vel, Juego j) {
-		this.juego = j;
+	public Entidad(int x,int y, String [] graficos,int vel) {
 		this.visitor = null;
 		this.posX = x;
 		this.posY = y;
@@ -64,11 +60,7 @@ public abstract class Entidad {
 	public void setEnJuego(boolean esta) {
 		this.enJuego = esta;
 	}
-	
-	public void setJuego(Juego j) {
-		this.juego = j;
-	}
-	
+
 	protected void setVisitor(Visitor v) {
 		this.visitor = v;
 	}
@@ -93,7 +85,7 @@ public abstract class Entidad {
 
 	public void morir() {
 		enJuego = false;
-		juego.quitarEntidad(this);
+		Juego.getInstance().quitarEntidad(this);
 	}
 
 }
