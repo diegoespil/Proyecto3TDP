@@ -135,7 +135,7 @@ public class Gui extends JFrame {
 					break;
 					}
 				case KeyEvent.VK_SPACE: {
-					jugador.getArma().disparar();
+					jugador.disparar();
 					}
 				}
 				

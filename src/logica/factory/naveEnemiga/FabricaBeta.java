@@ -13,6 +13,6 @@ public class FabricaBeta extends FabricaNaveEnemiga {
 	@Override
 	public NaveEnemiga crearNaveEnemiga() {
 		// TODO Auto-generated method stub
-		return new Beta(0, 0, nivel.getJuego());
+		return new Beta(0, 0);
 	}
 }

@@ -5,13 +5,11 @@ import logica.naves.NaveJugador;
 
 public abstract class Premio extends Entidad {
 
-	public Premio(int x, int y) {
-		super(x, y);
-		
+	public Premio(int x, int y,String[] graficos) {
+		super(x, y,graficos,5);
 	}
 	
-	public void activar(NaveJugador nj) {
-		
-	}
+	public abstract void activar(NaveJugador nj);
+
 
 }

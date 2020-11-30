@@ -1,9 +1,7 @@
 package logica.naves;
 
-import logica.arma.ArmaJugador;
-import logica.entidad.Entidad;
-import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
+import logica.proyectil.Proyectil;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveJugador;
 
@@ -14,18 +12,21 @@ public class NaveJugador extends Nave{
 			path+subPath+"/jugadorLeft.gif",
 			path+subPath+"/jugadorRight.gif"};
 
-	public NaveJugador(int x, int y, int vel,Juego juego) {
-		//El 15 seria el danio, igual se puede cambiar
-		super(x, y, graficos,vel,juego,  new ArmaJugador(15));
+	public NaveJugador(int x, int y) {
+		super(x, y, graficos,5);
 		setMovimiento( new MovimientoHorizontal(this,1) );
 		setVisitor(new VisitorNaveJugador(this));
-		setDanio(15);
 		setVida(100);
+		setDanio(15);
 	}
 
 	public void accept(Visitor v) {
-		v.visitNaveJugador(this);
-		
+		v.visitNaveJugador(this);	
+	}
+
+	@Override
+	public Proyectil disparar() {
+		return null;
 	}
 
 }
