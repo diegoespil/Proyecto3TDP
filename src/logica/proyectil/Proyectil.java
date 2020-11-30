@@ -6,14 +6,15 @@ import logica.juego.Juego;
 public abstract class Proyectil extends Entidad {
 
 	protected int danio;
+	protected static final String subPath = "/proyectiles";
 	
-	public Proyectil(int x, int y, int vel, int danio, Juego juego) {
+	public Proyectil(int x, int y, int vel, int danio, String [] graficos, Juego juego) {
 		/*
-		 * el null es la EntidadGrafica. Está sí por ahora para que compilen 
+		 * el null es la EntidadGrafica. Estï¿½ sï¿½ por ahora para que compilen 
 		 * los constructores. Debe cambiarse en las clases descendientes (concretas)
-		 * cuando se implemente gráficamente.
+		 * cuando se implemente grï¿½ficamente.
 		 */
-		super(x, y, null, vel, juego);
+		super(x, y, graficos, vel, juego);
 		this.danio = danio;
 	}
 	
