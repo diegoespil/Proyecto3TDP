@@ -15,25 +15,39 @@ public class Juego {
 	private Mapa mapa;
 	private Gui gui;
 	private Nivel nivel;
-	private LinkedList<Entidad> entidades;
+	private static LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
 	private boolean gameOver = false;
 	
+	private static Juego instance = null;
+	
 	private static final int WIDTH = 600;
 	private static final int HEIGHT = 600;
 	
-	public Juego(Gui gui) {
-		this.gui = gui;
+	private Juego() {
+		this.gui = Gui.getInstance();
+		System.out.println("Gui "+gui);
 		//this.mapa = new Mapa();
 		this.nivel = new Nivel1(this);
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42,5,this);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
 		agregarJugador();
-		inicializarEntidades();
+//		inicializarEntidades();
 		
 		//agregarEntidades();
+	}
+/*	
+	lo sacraria a este metodo
+	public void setGui(Gui gui) {
+		this.gui=gui;
+	}
+*/	
+	public static Juego getInstance() {
+		if (instance == null)
+			instance = new Juego();
+		return instance;
 	}
 
 	public void agregarEntidades() {
@@ -43,8 +57,12 @@ public class Juego {
 	}
 
 	private void agregarJugador() {
-		gui.agregarEntidad(jugador.getGrafica().getLabel());
+		Gui.getInstance().agregarEntidad(jugador.getGrafica().getLabel());
 		
+	}
+	
+	public static void agregarEntidad(Entidad e) {
+		entidades.add(e);
 	}
 
 	public void inicializarEntidades() {

@@ -6,8 +6,8 @@ public class Mente extends Thread {
 	
 	private Juego juego;
 	
-	public Mente(Juego juego) {
-		this.juego = juego;
+	public Mente() {
+		juego = Juego.getInstance();
 	}
 	
 	public void run() {

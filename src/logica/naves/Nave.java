@@ -33,4 +33,8 @@ public abstract class Nave extends Entidad{
 		this.danio= danio;
 	}
 	
+	public Arma getArma() {
+		return arma;
+	}
+	
 }

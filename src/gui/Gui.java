@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -25,9 +26,12 @@ public class Gui extends JFrame {
 
 
 	private JLayeredPane contentPane;
-	private Juego juego;
+	//private Juego juego;
 	private Mente mente;
+	private ControlJugador controlJugador;
+	private static Gui instance;
 //	private JLabel fondo;
+
 
 	/**
 	 * Launch the application.
@@ -50,7 +54,7 @@ public class Gui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Gui() {
+	private Gui() {
 		
 //Segunda opcion para iniciar la gui
 //		fondo = new JLabel();
@@ -66,6 +70,7 @@ public class Gui extends JFrame {
 //		setSize(600,650);
 //		setLocationRelativeTo(null);
 //=======
+		instance = this;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
 		setSize(600,650);
@@ -77,10 +82,10 @@ public class Gui extends JFrame {
 		contentPane.setLayout(null);
 		
 		iniciarJuego();
-		mente = new Mente(juego);
+		mente = new Mente();
 		mente.start();
 		
-	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo.gif"));
+	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo/fondo.gif"));
 	    JLabel label = new JLabel(icon);
 	    label.setBounds(0,0,600,617);
 	    icon.setImageObserver(label);
@@ -88,11 +93,17 @@ public class Gui extends JFrame {
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
 
 		setContentPane(contentPane);
-		
-		
 	}
 	
 	
+	
+	public static Gui getInstance() {
+	
+	       //Yo sacaria esto por que esta clase nunca seria null ya que arranca el juego en esta instancia
+		//if (instance == null) 
+		//	instance = new Gui();
+		return instance;
+	}
 
 	public void agregarEntidad(JLabel label) {
 		
@@ -105,21 +116,29 @@ public class Gui extends JFrame {
 	}
 
 	private void iniciarJuego() {
-		juego = new Juego(this);
-		NaveJugador jugador = juego.getJugador();
+		NaveJugador jugador = Juego.getInstance().getJugador();
 		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				int code = e.getKeyCode();
+				switch (code) {
+				case KeyEvent.VK_LEFT: {
 					jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
 					jugador.getGrafica().actualizar(1);
 					jugador.mover();
-				}
-				else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+					break;
+					}
+				case KeyEvent.VK_RIGHT: {
 					jugador.getMovimiento().setDireccion(MovimientoHorizontal.DERECHA);
 					jugador.getGrafica().actualizar(2);
 					jugador.mover();
+					break;
+					}
+				case KeyEvent.VK_SPACE: {
+					jugador.getArma().disparar();
+					}
 				}
+				
 			}
 			
 			public void keyReleased(KeyEvent e) {
@@ -129,5 +148,47 @@ public class Gui extends JFrame {
 		validate();
 		repaint();
 	}
+	
+	public static class ControlJugador implements KeyListener{
+
+		private static Juego juego;
+		private Entidad jugador;
+		
+		public ControlJugador() {
+			juego = Juego.getInstance();
+			jugador = juego.getJugador();;
+		}
+		
+		@Override
+		public void keyPressed(KeyEvent e) {
+			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+				System.out.println("mover izquierda");
+				jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
+				jugador.getGrafica().actualizar(1);
+				jugador.mover();
+			}
+			else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+				System.out.println("mover derecha");
+				jugador.getMovimiento().setDireccion(MovimientoHorizontal.DERECHA);
+				jugador.getGrafica().actualizar(2);
+				jugador.mover();
+			}
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			jugador.getGrafica().actualizar(0);
+		}
+
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		
+	}
+
 
 }
