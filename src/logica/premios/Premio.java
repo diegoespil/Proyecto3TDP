@@ -1,6 +1,7 @@
 package logica.premios;
 
 import logica.entidad.Entidad;
+import logica.naves.NaveJugador;
 
 public abstract class Premio extends Entidad {
 
@@ -9,7 +10,7 @@ public abstract class Premio extends Entidad {
 		
 	}
 	
-	public void activar() {
+	public void activar(NaveJugador nj) {
 		
 	}
 

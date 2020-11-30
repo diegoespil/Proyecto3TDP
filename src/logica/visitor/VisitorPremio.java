@@ -1,16 +1,17 @@
 package logica.visitor;
 
-import logica.entidad.Entidad;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
-public class VisitorPremio extends Visitor {
+public class VisitorPremio implements Visitor {
 
-	public VisitorPremio(Entidad e) {
-		super(e);
+	protected Premio premio;
+	
+	public VisitorPremio(Premio p) {
+		this.premio = p;
 	}
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}

@@ -1,23 +1,23 @@
 package logica.visitor;
 
-import logica.entidad.Entidad;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
-public class VisitorNaveEnemiga extends Visitor {
+public class VisitorNaveEnemiga implements Visitor {
+	
+	protected NaveEnemiga nave;
 
 	public VisitorNaveEnemiga(NaveEnemiga ne) {
-		super(ne);
+		this.nave = ne;
 	}
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
 	public void visitNaveJugador(NaveJugador nave) {
-		NaveEnemiga miNave = (NaveEnemiga) this.entidad;
-		nave.setVida( nave.getVida() - miNave.getDanio() );
+		nave.setVida(0);
 	}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}

@@ -1,20 +1,13 @@
 package logica.visitor;
 
-import logica.entidad.Entidad;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
-public abstract class Visitor {
-	
-	protected Entidad entidad;
+public interface Visitor {
 
-	public Visitor(Entidad e) {
-		this.entidad = e;
-	 }
-	
 	public abstract void visitNaveEnemiga(NaveEnemiga nave);
 	
 	public abstract void visitNaveJugador(NaveJugador nave);
