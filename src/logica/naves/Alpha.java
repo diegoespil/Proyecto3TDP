@@ -14,7 +14,7 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveAlphaRight.gif"};
 	
 	public Alpha(int x, int y){
-		super(x, y,5,graficos);
+		super(x, y,5,graficos,20);
 		setVida(50);
 		setDanio(15);
 	}

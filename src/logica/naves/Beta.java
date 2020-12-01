@@ -8,7 +8,7 @@ public class Beta extends NaveEnemiga {
 	
 	public Beta(int x, int y) {
 
-		super(x, y, 5,graficos);
+		super(x, y, 5,graficos,30);
 		setVida(100);
 		setDanio(30);
 	}

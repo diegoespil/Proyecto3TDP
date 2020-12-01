@@ -121,7 +121,7 @@ public class Juego {
 		return this.gameOver;
 	}
 
-	public void moverEntidades() {
+	synchronized public void moverEntidades() {
 		// TODO Auto-generated method stub
 		for (Entidad e: entidades) {
 			e.mover();
