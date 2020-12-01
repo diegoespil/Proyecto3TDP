@@ -24,8 +24,6 @@ public class Tanda {
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
 			int posY = r.nextInt(70)*(-1);
-			System.out.println("pos x random "+posX);
-			System.out.println("pos y random "+posY);
 			NaveEnemiga ne = nivel.getFabricaNaveAlpha().crearNaveEnemiga();
 			ne.setPosX(posX);
 			ne.setPosY(posY);

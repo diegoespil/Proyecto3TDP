@@ -29,7 +29,11 @@ public class NaveJugador extends Nave{
 	@SuppressWarnings("static-access")
 	@Override
 	public void disparar() {
-		ProyectilJugador p = new ProyectilJugador(posX,posY,40,15);
+		int width = getGrafica().getWidth();
+		System.out.println(" pos y "+posY);
+		ProyectilJugador p = new ProyectilJugador((posX+width)-(width/2)-5,posY,40,15);
+		System.out.println("Height proyectil "+p.getGrafica().getHeight());
+		p.setPosY(posY-p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
 		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
 	}

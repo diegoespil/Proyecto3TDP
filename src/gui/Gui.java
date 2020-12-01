@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -30,6 +31,7 @@ public class Gui extends JFrame {
 	private Mente mente;
 	private ControlJugador controlJugador;
 	private static Gui instance;
+	private JLabel lblPuntaje;
 //	private JLabel fondo;
 
 
@@ -90,7 +92,13 @@ public class Gui extends JFrame {
 	    label.setBounds(0,0,600,617);
 	    icon.setImageObserver(label);
 	    
+	    lblPuntaje = new JLabel("Puntos: 0");
+	    lblPuntaje.setForeground(Color.WHITE);
+		lblPuntaje.setFont(new java.awt.Font("Tahoma", 1, 11));
+	    lblPuntaje.setBounds(500, 20, 100, 20);
+	    
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
+	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
 
 		setContentPane(contentPane);
 	}
@@ -189,5 +197,7 @@ public class Gui extends JFrame {
 		
 	}
 
-
+	public void actualizarPuntaje() {
+		lblPuntaje.setText("Puntos: "+Juego.getInstance().getPuntaje());
+	}
 }

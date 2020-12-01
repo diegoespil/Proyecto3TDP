@@ -15,8 +15,8 @@ public class MovimientoVertical extends Movimiento {
 	
 	public void mover() {
 		JLabel lbl = this.entidad.getGrafica().getLabel();
-		lbl.setBounds(lbl.getX(), lbl.getY()  + direccion * this.entidad.getVelocidad(), lbl.getWidth(), lbl.getHeight());
-		this.entidad.setPosY(lbl.getY()+direccion*this.entidad.getVelocidad());
+		lbl.setBounds(lbl.getX(), lbl.getY()  + (direccion * this.entidad.getVelocidad()), lbl.getWidth(), lbl.getHeight());
+		this.entidad.setPosY(lbl.getY()+(direccion*this.entidad.getVelocidad()));
 	}
 				
 

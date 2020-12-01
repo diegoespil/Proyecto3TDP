@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import gui.Gui;
 import logica.entidad.Entidad;
+import logica.naves.Alpha;
 import logica.naves.NaveJugador;
 import logica.nivel.Nivel;
 import logica.nivel.Nivel1;
@@ -17,6 +18,7 @@ public class Juego {
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
 	private boolean gameOver = false;
+	private int puntaje = 0;
 	
 	private static Juego instance = null;
 	
@@ -106,6 +108,7 @@ public class Juego {
 			System.out.println("Colision");
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
+			Gui.getInstance().actualizarPuntaje();
 		}
 	}
 
@@ -131,12 +134,22 @@ public class Juego {
 	}
 	
 	public void removerEntidades() {
+		for (Entidad e: entidades) {
+			if (!e.estaEnJuego())
+				entidadesAEliminar.add(e);
+		}
 		for (Entidad e: entidadesAEliminar) {
 			gui.remove(e.getGrafica().getLabel());
 			entidades.remove(e);
 		}
 	}
 	
+	public void aumentarPuntaje(int p) {
+		puntaje+=p;
+	}
 	
+	public int getPuntaje() {
+		return puntaje;
+	}
 
 }

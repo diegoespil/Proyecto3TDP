@@ -1,7 +1,11 @@
 package logica.naves;
 
+import gui.Gui;
+import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
 import logica.movimiento.MovimientoVerticalAcelerado;
+import logica.proyectil.Proyectil;
+import logica.proyectil.ProyectilEnemigoAlpha;
 
 public class Alpha extends NaveEnemiga {
 
@@ -25,7 +29,10 @@ public class Alpha extends NaveEnemiga {
 
 	@Override
 	public void disparar() {
-
+		Proyectil p = new ProyectilEnemigoAlpha(posX+(getGrafica().getWidth()/2),posY+getGrafica().getHeight(),30,50);
+		Juego.getInstance().agregarEntidad(p);
+		Gui.getInstance().agregarEntidad(p.getGrafica());
+		
 	}
 
 }
