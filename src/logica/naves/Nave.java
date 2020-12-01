@@ -1,7 +1,6 @@
 package logica.naves;
 
 import logica.entidad.Entidad;
-import logica.proyectil.Proyectil;
 
 public abstract class Nave extends Entidad{
 
@@ -30,6 +29,6 @@ public abstract class Nave extends Entidad{
 		this.danio = danio;
 	}
 
-	public abstract Proyectil disparar();
+	public abstract void disparar();
 	
 }

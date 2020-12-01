@@ -87,12 +87,13 @@ public class Juego {
 	}
 	
 	public void detectarColisiones() {
+
 		for (int i = 0; i < entidades.size();i++) {
 			Entidad e1 = entidades.get(i);
 			hayColision(e1,jugador);
 			for (int j= i+1; j< entidades.size();j++) {
 				hayColision(e1,entidades.get(j));
-			}
+			} 
 		}
 	}
 

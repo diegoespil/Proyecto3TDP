@@ -1,7 +1,9 @@
 package logica.premios;
 
+import logica.movimiento.MovimientoVertical;
 import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
+import logica.visitor.VisitorPremio;
 
 public class Cuarentena extends Temporal {
 
@@ -11,6 +13,9 @@ public class Cuarentena extends Temporal {
 	
 	public Cuarentena(int x, int y) {
 		super(x, y, graficos, tiempo);
+		setVisitor(new VisitorPremio(this));
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
+		
 	}
 
 	public void accept(Visitor v) {

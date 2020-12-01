@@ -1,7 +1,9 @@
 package logica.premios;
 
+import logica.movimiento.MovimientoVertical;
 import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
+import logica.visitor.VisitorPremio;
 
 public class Pocion extends Precioso {
 
@@ -10,6 +12,8 @@ public class Pocion extends Precioso {
 	
 	public Pocion(int x, int y) {
 		super(x, y, graficos);
+		setVisitor(new VisitorPremio(this));
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
 	}
 
 	public void accept(Visitor v) {

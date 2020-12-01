@@ -1,6 +1,8 @@
 package logica.proyectil;
 
+import logica.movimiento.MovimientoVertical;
 import logica.visitor.Visitor;
+import logica.visitor.VisitorProyectilJugador;
 
 public class ProyectilJugador extends Proyectil {
 	
@@ -8,6 +10,8 @@ public class ProyectilJugador extends Proyectil {
 
 	public ProyectilJugador(int x, int y, int v, int d) {
 		super(x, y, v, d, graficos);
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ARRIBA));
+		setVisitor(new VisitorProyectilJugador(this));
 	}
 
 	public void accept(Visitor v) {

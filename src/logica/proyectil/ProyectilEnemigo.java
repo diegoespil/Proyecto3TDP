@@ -1,5 +1,6 @@
 package logica.proyectil;
 
+import logica.juego.Juego;
 import logica.visitor.Visitor;
 
 public class ProyectilEnemigo extends Proyectil {

@@ -1,7 +1,9 @@
 package logica.naves;
 
+import gui.Gui;
+import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
-import logica.proyectil.Proyectil;
+import logica.proyectil.ProyectilJugador;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveJugador;
 
@@ -24,9 +26,12 @@ public class NaveJugador extends Nave{
 		v.visitNaveJugador(this);	
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
-	public Proyectil disparar() {
-		return null;
+	public void disparar() {
+		ProyectilJugador p = new ProyectilJugador(posX,posY,40,15);
+		Juego.getInstance().agregarEntidad(p);
+		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
 	}
 
 }

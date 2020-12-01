@@ -1,7 +1,5 @@
 package logica.naves;
 
-import logica.proyectil.Proyectil;
-
 public class Beta extends NaveEnemiga {
 
 	private static final String [] graficos = new String[] {path+subPath+"/naveBeta.gif",
@@ -16,9 +14,8 @@ public class Beta extends NaveEnemiga {
 	}
 
 	@Override
-	public Proyectil disparar() {
+	public void disparar() {
 		
-		return null;
 	}
 	
 }

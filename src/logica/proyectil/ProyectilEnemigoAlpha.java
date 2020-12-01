@@ -1,5 +1,7 @@
 package logica.proyectil;
 
+import logica.movimiento.MovimientoVertical;
+import logica.visitor.VisitorProyectilEnemigo;
 
 public class ProyectilEnemigoAlpha extends ProyectilEnemigo {
 	
@@ -7,7 +9,9 @@ public class ProyectilEnemigoAlpha extends ProyectilEnemigo {
 	
 	public ProyectilEnemigoAlpha(int x, int y, int v, int d) {
 		super(x, y, v, d,graficos);
-		//falta implementar su EntidadGrafica
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
+		setVisitor(new VisitorProyectilEnemigo(this));
+		
 	}
 
 }

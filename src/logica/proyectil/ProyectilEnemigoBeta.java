@@ -1,12 +1,16 @@
 package logica.proyectil;
 
+import logica.movimiento.MovimientoVertical;
+import logica.visitor.VisitorProyectilEnemigo;
+
 public class ProyectilEnemigoBeta extends ProyectilEnemigo {
 
 	private static final String [] graficos = new String[] {path+subPath+"/proyectil1.gif"};
 	
 	public ProyectilEnemigoBeta(int x, int y, int v, int d) {
 		super(x, y, v, d, graficos);
-		//fatla implementar su EntidadGrafica
+		setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
+		setVisitor(new VisitorProyectilEnemigo(this));
 	}
 	
 }

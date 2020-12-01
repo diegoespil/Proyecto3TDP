@@ -2,8 +2,6 @@ package logica.naves;
 
 import logica.movimiento.MovimientoVertical;
 import logica.movimiento.MovimientoVerticalAcelerado;
-import logica.proyectil.Proyectil;
-
 
 public class Alpha extends NaveEnemiga {
 
@@ -26,9 +24,8 @@ public class Alpha extends NaveEnemiga {
 	}
 
 	@Override
-	public Proyectil disparar() {
-		// TODO Auto-generated method stub
-		return null;
+	public void disparar() {
+
 	}
 
 }
