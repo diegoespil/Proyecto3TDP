@@ -21,7 +21,7 @@ public class Alpha extends NaveEnemiga {
 	
 	@Override
 	public void setVida(int vida) {
-		this.vida = vida;
+		super.setVida(vida);
 		if (getVida() <= 10 && estaEnJuego())
 			setMovimiento(new MovimientoVerticalAcelerado(this, MovimientoVertical.ABAJO));
 		

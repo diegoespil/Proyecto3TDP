@@ -18,10 +18,8 @@ public class VisitorProyectilJugador implements Visitor {
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		nave.setVida( nave.getVida() - proyectil.getDanio() );
 		proyectil.setEnJuego(false);
-		if (nave.getVida() <= 0) {
-			//Juego.getInstance().aumentarPuntaje(nave.getPuntos());
-			Juego.getInstance().quitarEntidad(nave);;
-		}
+		System.out.println("deje al enemigo con "+nave.getVida()+" de vida");
+		System.out.println("El enemigo quedo en juego: "+nave.estaEnJuego());
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}
