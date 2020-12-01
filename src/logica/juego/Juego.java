@@ -21,6 +21,7 @@ public class Juego {
 	private NaveJugador jugador;
 	private boolean gameOver = false;
 	private int puntaje = 0;
+	private int contadorEnemigos;
 	private Visitor visitorRemover;
 	
 	private static Juego instance = null;
@@ -31,12 +32,12 @@ public class Juego {
 	private Juego() {
 		this.gui = Gui.getInstance();
 		System.out.println("Gui "+gui);
-		//this.mapa = new Mapa();
 		this.nivel = new Nivel1(this);
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
 		agregarJugador();
+		contadorEnemigos = 0;
 		visitorRemover = new VisitorRemover();
 //		inicializarEntidades();
 		
@@ -77,6 +78,7 @@ public class Juego {
 				for (Entidad e: naves) {
 					entidades.add(e);
 					gui.agregarEntidad(e.getGrafica());
+					contadorEnemigos++;
 				}
 			} else {
 				nivel = nivel.nextLevel();
@@ -154,8 +156,16 @@ public class Juego {
 		puntaje+=p;
 	}
 	
+	public void restarEnemigo() {
+		contadorEnemigos--;
+	}
+	
 	public int getPuntaje() {
 		return puntaje;
+	}
+	
+	public int getContadorEnemigos() {
+		return contadorEnemigos;
 	}
 
 }

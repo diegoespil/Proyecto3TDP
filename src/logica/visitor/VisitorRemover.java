@@ -15,7 +15,7 @@ public class VisitorRemover implements Visitor{
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		Juego j = Juego.getInstance();
 		j.aumentarPuntaje(nave.getPuntos());
-		j.setEnemigosVivos(j.getEnemigosVivos()-1);
+		j.restarEnemigo();
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}
