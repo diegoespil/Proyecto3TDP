@@ -9,6 +9,8 @@ import logica.naves.Alpha;
 import logica.naves.NaveJugador;
 import logica.nivel.Nivel;
 import logica.nivel.Nivel1;
+import logica.visitor.Visitor;
+import logica.visitor.VisitorRemover;
 
 public class Juego {
 	
@@ -19,6 +21,7 @@ public class Juego {
 	private NaveJugador jugador;
 	private boolean gameOver = false;
 	private int puntaje = 0;
+	private Visitor visitorRemover;
 	
 	private static Juego instance = null;
 	
@@ -34,6 +37,7 @@ public class Juego {
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
 		agregarJugador();
+		visitorRemover = new VisitorRemover();
 //		inicializarEntidades();
 		
 		//agregarEntidades();
@@ -135,8 +139,10 @@ public class Juego {
 	
 	public void removerEntidades() {
 		for (Entidad e: entidades) {
-			if (!e.estaEnJuego())
+			if (!e.estaEnJuego()) {
 				entidadesAEliminar.add(e);
+				e.accept(visitorRemover);
+			}
 		}
 		for (Entidad e: entidadesAEliminar) {
 			gui.remove(e.getGrafica().getLabel());
