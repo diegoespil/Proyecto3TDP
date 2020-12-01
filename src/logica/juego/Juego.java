@@ -105,7 +105,7 @@ public class Juego {
 		Rectangle r1 = new Rectangle(e1.getPosX()+2,e1.getPosY()+2,e1.getGrafica().getGrafico().getIconWidth()-2,e1.getGrafica().getGrafico().getIconHeight()-2);
 		Rectangle r2 = new Rectangle(e2.getPosX()+2,e2.getPosY()+2,e2.getGrafica().getGrafico().getIconWidth()-2,e2.getGrafica().getGrafico().getIconHeight()-2);
 		if (r1.intersects(r2)) {
-			System.out.println("Colision");
+			//System.out.println("Colision");
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
 			Gui.getInstance().actualizarPuntaje();

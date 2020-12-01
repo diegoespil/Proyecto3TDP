@@ -31,7 +31,7 @@ public class NaveJugador extends Nave{
 	public void disparar() {
 		int width = getGrafica().getWidth();
 		System.out.println(" pos y "+posY);
-		ProyectilJugador p = new ProyectilJugador((posX+width)-(width/2)-5,posY,40,15);
+		ProyectilJugador p = new ProyectilJugador((posX+width)-(width/2)-5,posY,40,danio);
 		System.out.println("Height proyectil "+p.getGrafica().getHeight());
 		p.setPosY(posY-p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
