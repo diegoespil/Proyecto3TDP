@@ -8,10 +8,8 @@ import logica.factory.naveEnemiga.FabricaBeta;
 import logica.factory.naveEnemiga.FabricaNaveEnemiga;
 import logica.factory.premio.FabricaCuarentena;
 import logica.factory.premio.FabricaPocion;
-import logica.factory.premio.FabricaPrecioso;
 import logica.factory.premio.FabricaPremio;
 import logica.factory.premio.FabricaSuperArma;
-import logica.factory.premio.FabricaTemporal;
 import logica.juego.Juego;
 
 
@@ -36,11 +34,9 @@ public abstract class Nivel {
 		this.enemigos = enemigos;
 		this.fabricaNaveAlpha = new FabricaAlpha(this);
 		this.fabricaNaveBeta = new FabricaBeta(this);
-		this.fabricaCuarentena = new FabricaCuarentena();
-		this.fabricaPocion = new FabricaPocion();
-		this.fabricaPrecioso = new FabricaPrecioso();
-		this.fabricaSuperArma = new FabricaSuperArma();
-		this.fabricaTemporal = new FabricaTemporal();
+		this.fabricaCuarentena = new FabricaCuarentena(this);
+		this.fabricaPocion = new FabricaPocion(this);
+		this.fabricaSuperArma = new FabricaSuperArma(this);
 		
 		this.premios = new LinkedList<Entidad>();
 		

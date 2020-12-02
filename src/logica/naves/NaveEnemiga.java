@@ -3,6 +3,7 @@ package logica.naves;
 import javax.swing.JLabel;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
+import logica.premios.Premio;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveEnemiga;
 
@@ -11,6 +12,7 @@ public abstract class NaveEnemiga extends Nave{
 	protected int rango;
 	protected static final String subPath = "/enemigos";
 	protected int puntos;
+	protected Premio powerUp;
 
 	public NaveEnemiga(int x, int y, int vel, String [] graficos, int puntos) {
 		super(x, y, graficos, vel);
@@ -18,6 +20,7 @@ public abstract class NaveEnemiga extends Nave{
 		setVisitor(new VisitorNaveEnemiga(this));
 		this.puntos = puntos;
 		rango = 400;
+		powerUp = null;
 		
 	}
 	
@@ -27,6 +30,14 @@ public abstract class NaveEnemiga extends Nave{
 	
 	public int getRango() {
 		return this.rango;
+	}
+	
+	public Premio getPowerUp() {
+		return powerUp;
+	}
+	
+	public void setPowerUp(Premio p) {
+		this.powerUp = p;
 	}
 	
 	public void accept(Visitor v) {
