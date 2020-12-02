@@ -18,7 +18,9 @@ public class VisitorRemover implements Visitor{
 		j.restarEnemigo();
 	}
 	
-	public void visitNaveJugador(NaveJugador nave) {}
+	public void visitNaveJugador(NaveJugador nave) {
+		Juego.getInstance().GameOver();
+	}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
 	

@@ -25,8 +25,9 @@ public class Mente extends Thread {
 			juego.detectarColisiones();
 			juego.dispararEntidades();
 			juego.removerEntidades();
-			juego.checkJugador();
+			//juego.checkJugador();
 		}
+		Gui.getInstance().gameOver();
 	}
 
 }
