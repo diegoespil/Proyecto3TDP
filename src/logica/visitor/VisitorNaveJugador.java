@@ -25,6 +25,7 @@ public class VisitorNaveJugador implements Visitor {
 	
 	public void visitPremio(Premio premio) {
 		premio.activar(nave);
+		System.out.println("El jugador agarro un premio");
 	}
 	
 }

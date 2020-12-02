@@ -16,7 +16,9 @@ public class VisitorPremio implements Visitor {
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
-	public void visitNaveJugador(NaveJugador nave) {}
+	public void visitNaveJugador(NaveJugador nave) {
+		premio.setEnJuego(false);
+	}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}
 
