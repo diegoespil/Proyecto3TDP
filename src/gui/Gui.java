@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import logica.entidad.Entidad;
 import logica.juego.Juego;
@@ -87,7 +88,8 @@ public class Gui extends JFrame {
 	    lblPuntaje.setBounds(500, 20, 100, 20);
 	    
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
-	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
+	    contentPane.add(lblPuntaje, JLayeredPane.POPUP_LAYER);
+	    
 
 		setContentPane(contentPane);
 	}
@@ -100,7 +102,7 @@ public class Gui extends JFrame {
 
 	public void agregarEntidad(JLabel label) {
 
-		contentPane.add(label, JLayeredPane.DRAG_LAYER);
+		contentPane.add(label, JLayeredPane.POPUP_LAYER);
 		this.validate();
 		this.repaint();
 	}
@@ -178,5 +180,14 @@ public class Gui extends JFrame {
 
 	public void actualizarPuntaje() {
 		lblPuntaje.setText("Puntos: "+Juego.getInstance().getPuntaje());
+	}
+
+	public void gameOver() {
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/gameOver/gameOver.gif"));
+		JLabel lblGameOver = new JLabel(icon,SwingConstants.CENTER);
+		lblGameOver.setSize(icon.getIconWidth(), icon.getIconHeight());
+		contentPane.add(lblGameOver, JLayeredPane.DRAG_LAYER);
+		this.validate();
+		this.repaint();
 	}
 }
