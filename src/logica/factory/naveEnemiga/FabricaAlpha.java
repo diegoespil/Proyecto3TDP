@@ -37,6 +37,7 @@ public class FabricaAlpha extends FabricaNaveEnemiga {
 			nave.setPowerUp(null);
 		}
 
+		System.out.println("Nave "+nave+" PowerUps "+nave.getPowerUp());
 		return nave;
 	}
 

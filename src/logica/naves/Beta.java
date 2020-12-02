@@ -21,7 +21,7 @@ public class Beta extends NaveEnemiga {
 	@SuppressWarnings("static-access")
 	@Override
 	public void disparar() {
-		ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,35,danio);
+		ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,20,danio);
 		p.setPosY(posY-p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
 		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());

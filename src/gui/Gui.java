@@ -126,8 +126,13 @@ public class Gui extends JFrame {
 					jugador.mover();
 					break;
 					}
+				case KeyEvent.VK_UP: { 	//para testear cuarentena, sacar despues
+					Juego.getInstance().activarCuarentena();
+					break;
+					}
 				case KeyEvent.VK_SPACE: {
-					jugador.disparar();}
+					jugador.disparar();
+					}
 				}
 				
 			}

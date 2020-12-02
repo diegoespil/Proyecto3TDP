@@ -29,7 +29,7 @@ public class Alpha extends NaveEnemiga {
 	
 	@Override
 	public void disparar() {
-		Proyectil p = new ProyectilEnemigoAlpha(posX,posY+20,35,danio);
+		Proyectil p = new ProyectilEnemigoAlpha(posX,posY+20,20,danio);
 		p.setPosY(posY-p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
 		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());

@@ -22,7 +22,7 @@ public class VisitorDisparo implements Visitor {
 		Rectangle r1 = new Rectangle(nave.getPosX()+2,nave.getPosY()+2,nave.getGrafica().getGrafico().getIconHeight()-2,nave.getRango());
 		Rectangle r2 = new Rectangle(nave2.getPosX()+2,nave2.getPosY()+2,nave2.getGrafica().getGrafico().getIconWidth()-2,nave2.getGrafica().getGrafico().getIconHeight()-2);
 		if (r1.intersects(r2)) {
-			nave.disparar();
+			if ( !nave.estaDetenido() )nave.disparar();
 		}
 		
 	}

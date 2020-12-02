@@ -1,5 +1,6 @@
 package logica.visitor;
 
+import gui.Gui;
 import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
@@ -16,6 +17,15 @@ public class VisitorRemover implements Visitor{
 		Juego j = Juego.getInstance();
 		j.aumentarPuntaje(nave.getPuntos());
 		j.restarEnemigo();
+		Premio powerUp = nave.getPowerUp();
+		if(powerUp!= null) {
+			System.out.println("Antes Posicion powerup x:"+powerUp.getPosX()+" y:"+powerUp.getPosY());
+			powerUp.setPosX(nave.getPosX());
+			powerUp.setPosY(nave.getPosY());
+			j.agregarEntidad(nave.getPowerUp());
+			System.out.println("Despues Posicion powerup x:"+powerUp.getPosX()+" y:"+powerUp.getPosY());
+			Gui.getInstance().agregarEntidad(powerUp.getGrafica().getLabel());
+		}	
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {

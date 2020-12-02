@@ -33,7 +33,7 @@ public class FabricaBeta extends FabricaNaveEnemiga {
 		else {
 			nave.setPowerUp(null);
 		}
-
+		System.out.println("Nave "+nave+" PowerUps "+nave.getPowerUp());
 		return nave;
 	}
 
