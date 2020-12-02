@@ -7,8 +7,7 @@ import logica.visitor.VisitorPremio;
 
 public class Cuarentena extends Temporal {
 
-	//esto es hasta que tengamos la imagen.
-	protected static final String[] graficos=null;
+	protected static final String[] graficos= {"/resources/img/powerUps/pw3.gif"};
 	protected static final int tiempo = 5;	
 	
 	public Cuarentena(int x, int y) {
@@ -24,7 +23,7 @@ public class Cuarentena extends Temporal {
 
 	@Override
 	public void activar(NaveJugador nj) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

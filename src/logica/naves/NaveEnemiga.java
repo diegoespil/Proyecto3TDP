@@ -17,10 +17,8 @@ public abstract class NaveEnemiga extends Nave{
 		setMovimiento(new MovimientoVertical(this,MovimientoVertical.ABAJO));
 		setVisitor(new VisitorNaveEnemiga(this));
 		this.puntos = puntos;
-		/* 
-		 * notar que todav�a no estamos usando el atributo rango, y no se 
-		 * inicialliza en el constructor
-		 */
+		rango = 400;
+		
 	}
 	
 	public int getPuntos() {

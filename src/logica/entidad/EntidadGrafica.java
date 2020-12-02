@@ -4,7 +4,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class EntidadGrafica extends JLabel{
-	
+
+	private static final long serialVersionUID = 1L;
 	protected String [] graficos;
 	//protected JLabel label;
 	protected ImageIcon graficoActual;

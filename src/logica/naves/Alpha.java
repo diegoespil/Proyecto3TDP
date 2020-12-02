@@ -26,13 +26,13 @@ public class Alpha extends NaveEnemiga {
 			setMovimiento(new MovimientoVerticalAcelerado(this, MovimientoVertical.ABAJO));
 		
 	}
-
+	
 	@Override
 	public void disparar() {
-		Proyectil p = new ProyectilEnemigoAlpha(posX+(getGrafica().getWidth()/2),posY+getGrafica().getHeight(),30,50);
+		Proyectil p = new ProyectilEnemigoAlpha(posX,posY+20,35,danio);
+		p.setPosY(posY-p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
-		Gui.getInstance().agregarEntidad(p.getGrafica());
-		
+		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
 	}
 
 }

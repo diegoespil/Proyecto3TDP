@@ -1,6 +1,5 @@
 package logica.visitor;
 
-import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
@@ -18,8 +17,8 @@ public class VisitorProyectilJugador implements Visitor {
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		nave.setVida( nave.getVida() - proyectil.getDanio() );
 		proyectil.setEnJuego(false);
-		System.out.println("deje al enemigo con "+nave.getVida()+" de vida");
-		System.out.println("El enemigo quedo en juego: "+nave.estaEnJuego());
+		//System.out.println("deje al enemigo con "+nave.getVida()+" de vida");
+		//System.out.println("El enemigo quedo en juego: "+nave.estaEnJuego());
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}

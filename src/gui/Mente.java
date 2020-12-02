@@ -23,6 +23,7 @@ public class Mente extends Thread {
 				juego.inicializarEntidades();
 			}
 			juego.detectarColisiones();
+			juego.dispararEntidades();
 			juego.removerEntidades();
 		}
 	}

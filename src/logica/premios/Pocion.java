@@ -7,8 +7,7 @@ import logica.visitor.VisitorPremio;
 
 public class Pocion extends Precioso {
 
-	//esto es hasta que tengamos la imagen.
-		protected static final String[] graficos=null;
+		protected static final String[] graficos= {"/resources/img/powerUps/pw2.gif"};
 	
 	public Pocion(int x, int y) {
 		super(x, y, graficos);
@@ -20,11 +19,9 @@ public class Pocion extends Precioso {
 		v.visitPremio(this);	
 	}
 
-	//ese 15 seria lo que recupere la pocion
 	@Override
 	public void activar(NaveJugador nj) {
-		nj.setVida(nj.getVida()+15);
-		
+		nj.setVida(nj.getVida()+15);	
 	}
 
 	

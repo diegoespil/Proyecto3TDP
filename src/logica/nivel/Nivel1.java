@@ -1,13 +1,8 @@
 package logica.nivel;
 
 import java.util.LinkedList;
-import java.util.Random;
-
 import logica.entidad.Entidad;
-import logica.factory.naveEnemiga.FabricaNaveEnemiga;
-import logica.factory.premio.FabricaPremio;
 import logica.juego.Juego;
-import logica.naves.NaveEnemiga;
 
 public class Nivel1 extends Nivel {
 

@@ -1,10 +1,7 @@
 package logica.movimiento;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
 import logica.entidad.Entidad;
-import logica.entidad.EntidadGrafica;
 
 public class MovimientoHorizontal extends Movimiento {
 

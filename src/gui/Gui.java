@@ -1,39 +1,28 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
 import logica.naves.NaveJugador;
-
-import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 
 public class Gui extends JFrame {
 
-
+	private static final long serialVersionUID = 1L;
 	private JLayeredPane contentPane;
-	//private Juego juego;
 	private Mente mente;
 	private ControlJugador controlJugador;
 	private static Gui instance;
 	private JLabel lblPuntaje;
-//	private JLabel fondo;
-
 
 	/**
 	 * Launch the application.
@@ -106,18 +95,11 @@ public class Gui extends JFrame {
 	
 	
 	public static Gui getInstance() {
-	
-	       //Yo sacaria esto por que esta clase nunca seria null ya que arranca el juego en esta instancia
-		//if (instance == null) 
-		//	instance = new Gui();
 		return instance;
 	}
 
 	public void agregarEntidad(JLabel label) {
-		
-//Segunda opcion para agregar entidades
-//		fondo.add(label);
-//=======
+
 		contentPane.add(label, JLayeredPane.DRAG_LAYER);
 		this.validate();
 		this.repaint();
@@ -190,11 +172,8 @@ public class Gui extends JFrame {
 
 		@Override
 		public void keyTyped(KeyEvent arg0) {
-			// TODO Auto-generated method stub
 			
 		}
-
-		
 	}
 
 	public void actualizarPuntaje() {

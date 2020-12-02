@@ -2,27 +2,26 @@ package logica.juego;
 
 import java.awt.Rectangle;
 import java.util.LinkedList;
-
 import gui.Gui;
 import logica.entidad.Entidad;
-import logica.naves.Alpha;
 import logica.naves.NaveJugador;
 import logica.nivel.Nivel;
 import logica.nivel.Nivel1;
 import logica.visitor.Visitor;
+import logica.visitor.VisitorDisparo;
 import logica.visitor.VisitorRemover;
 
 public class Juego {
 	
 	private Gui gui;
 	private Nivel nivel;
-	private static LinkedList<Entidad> entidades;
+	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
 	private boolean gameOver = false;
 	private int puntaje = 0;
 	private int contadorEnemigos;
-	private Visitor visitorRemover;
+	private Visitor visitorRemover, visitorDisparo;
 	
 	private static Juego instance = null;
 	
@@ -39,6 +38,7 @@ public class Juego {
 		agregarJugador();
 		contadorEnemigos = 0;
 		visitorRemover = new VisitorRemover();
+		visitorDisparo = new VisitorDisparo();
 //		inicializarEntidades();
 		
 		//agregarEntidades();
@@ -66,11 +66,11 @@ public class Juego {
 		
 	}
 	
-	public static void agregarEntidad(Entidad e) {
+	public void agregarEntidad(Entidad e) {
 		entidades.add(e);
 	}
 
-	public void inicializarEntidades() {
+	public synchronized void inicializarEntidades() {
 		if (nivel != null) {
 			LinkedList<Entidad> naves = nivel.getTanda();
 			System.out.println("Naves size "+naves.size());
@@ -80,21 +80,21 @@ public class Juego {
 					gui.agregarEntidad(e.getGrafica());
 					contadorEnemigos++;
 				}
-			} else {
+			} 
+			else {
 				nivel = nivel.nextLevel();
 			}
-		} else {
+		} 
+		else {
 			gameOver = true;
 		}
-		
 	}
 
 	public NaveJugador getJugador() {
-		// TODO Auto-generated method stub
 		return jugador;
 	}
 	
-	public void detectarColisiones() {
+	public synchronized void detectarColisiones() {
 
 		for (int i = 0; i < entidades.size();i++) {
 			Entidad e1 = entidades.get(i);
@@ -138,8 +138,16 @@ public class Juego {
 	public void quitarEntidad(Entidad entidad) {
 		entidadesAEliminar.add(entidad);
 	}
+
+	public synchronized void dispararEntidades() {
+		
+		for (int i = 0; i < entidades.size();i++) {
+			Entidad e1 = entidades.get(i);
+			e1.accept(visitorDisparo);
+		}
+	}
 	
-	public void removerEntidades() {
+	public synchronized void removerEntidades() {
 		for (Entidad e: entidades) {
 			if (!e.estaEnJuego()) {
 				entidadesAEliminar.add(e);
