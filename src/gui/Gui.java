@@ -2,6 +2,9 @@ package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.LayoutManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
@@ -192,6 +195,25 @@ public class Gui extends JFrame {
 		JLabel lblGameOver = new JLabel(icon,SwingConstants.CENTER);
 		lblGameOver.setSize(icon.getIconWidth(), icon.getIconHeight());
 		contentPane.add(lblGameOver, JLayeredPane.DRAG_LAYER);
+		this.validate();
+		this.repaint();
+	}
+
+	public void nextLevel() {
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/level/levelUp.gif"));
+		JLabel lblLevel = new JLabel(icon);
+		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
+		lblLevel.setBounds(100, 200, icon.getIconWidth(), icon.getIconHeight());
+		contentPane.add(lblLevel, JLayeredPane.DRAG_LAYER);
+		this.validate();
+		this.repaint();
+		try {
+			mente.sleep(4000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		contentPane.remove(lblLevel);
 		this.validate();
 		this.repaint();
 	}

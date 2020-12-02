@@ -7,7 +7,7 @@ import logica.juego.Juego;
 public class Nivel1 extends Nivel {
 
 	public Nivel1(Juego j) {
-		super(16,4,j);
+		super(16,2,j);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -28,9 +28,10 @@ public class Nivel1 extends Nivel {
 		this.cantidadTandas--;
 		Tanda tanda = null;
 		if (cantidadTandas >= 0) {
-			tanda = new Tanda(4,this);
+			tanda = new Tanda(8,this);
 			return tanda.getTanda();
-		} else return null;
+		} else 
+			return null;
 	}
 	
 	
