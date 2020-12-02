@@ -23,9 +23,8 @@ public class Tanda {
 		Random r= new Random();
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
-			int posY = r.nextInt(70)*(-1);
+			int posY = (r.nextInt(100)*(-1))*(3);
 			int tipoNave = r.nextInt(2)+1;
-			System.out.println("tipoNave "+tipoNave);
 			NaveEnemiga ne = null;
 			switch (tipoNave) {
 				case 1: {

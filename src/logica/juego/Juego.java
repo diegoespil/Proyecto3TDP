@@ -77,7 +77,7 @@ public class Juego {
 	public synchronized void inicializarEntidades() {
 		if (nivel != null) {
 			LinkedList<Entidad> naves = nivel.getTanda();
-			System.out.println("Naves size "+naves.size());
+			
 			if (naves != null) {	
 				for (Entidad e: naves) {
 					entidades.add(e);
@@ -86,6 +86,8 @@ public class Juego {
 				}
 			} 
 			else {
+				System.out.println("Next level");
+				Gui.getInstance().nextLevel();
 				nivel = nivel.nextLevel();
 			}
 		} 
@@ -133,8 +135,8 @@ public class Juego {
 
 	synchronized public void moverEntidades() {
 		// TODO Auto-generated method stub
-		for (Entidad e: entidades) {
-			e.mover();
+		for (int i= 0; i< entidades.size();i++) {
+			entidades.get(i).mover();
 		}
 	}
 
