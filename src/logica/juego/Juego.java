@@ -122,6 +122,10 @@ public class Juego {
 		// TODO Auto-generated method stub
 		return this.gameOver;
 	}
+	
+	public void GameOver() {
+		gameOver = true;
+	}
 
 	synchronized public void moverEntidades() {
 		// TODO Auto-generated method stub
@@ -147,20 +151,17 @@ public class Juego {
 		}
 	}
 	
-//	public void checkJugador() {
-//		if (!this.jugador.estaEnJuego()) {
-//
-//			Gui.getInstance().gameOver();
-//			this.gameOver = true;
-//		}
-//	}
-	
 	public synchronized void removerEntidades() {
 		for (Entidad e: entidades) {
 			if (!e.estaEnJuego()) {
 				entidadesAEliminar.add(e);
 				e.accept(visitorRemover);
 			}
+		}
+		if(!this.jugador.estaEnJuego()) {
+			entidadesAEliminar.add(jugador);
+			jugador.accept(visitorRemover);
+			
 		}
 		for (Entidad e: entidadesAEliminar) {
 			gui.remove(e.getGrafica().getLabel());
