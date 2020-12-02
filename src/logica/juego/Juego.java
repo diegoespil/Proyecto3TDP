@@ -175,7 +175,6 @@ public class Juego {
 	
 	public synchronized void activarCuarentena() {
 		VisitorPremioCuarentena vpc = new VisitorPremioCuarentena();
-		System.out.println("Cuarentena activada");
 		//Recorre la lista la primera vez, asignando movimiento nulo
 	    for (int i=0; i<entidades.size(); i++) {
 			Entidad e = entidades.get(i);
@@ -185,7 +184,6 @@ public class Juego {
 	        public void run() {
 	    		//cuando termina la cuarentena, asigna true para que la segunda vuelta
 	        	//les devuelva movimiento normal
-	        	System.out.println("cuarentena terminada");
 	    		vpc.setTerminado(true);
 	    		for (int i=0; i<entidades.size(); i++) {
 	    			Entidad e = entidades.get(i);
