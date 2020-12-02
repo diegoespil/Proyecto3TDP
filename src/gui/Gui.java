@@ -129,11 +129,13 @@ public class Gui extends JFrame {
 					jugador.mover();
 					break;
 					}
+				case KeyEvent.VK_UP: { 	//para testear cuarentena, sacar despues
+					Juego.getInstance().activarCuarentena();
+					break;
+					}
 				case KeyEvent.VK_SPACE: {
-					jugador.disparar();}
-				//para testear cuarentena, sacar despues
-				case KeyEvent.VK_UP: {
-					Juego.getInstance().activarCuarentena();}
+					jugador.disparar();
+					}
 				}
 				
 			}
@@ -201,12 +203,12 @@ public class Gui extends JFrame {
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/level/levelUp.gif"));
 		JLabel lblLevel = new JLabel(icon);
 		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
-		lblLevel.setBounds(200, 200, icon.getIconWidth(), icon.getIconHeight());
+		lblLevel.setBounds(100, 200, icon.getIconWidth(), icon.getIconHeight());
 		contentPane.add(lblLevel, JLayeredPane.DRAG_LAYER);
 		this.validate();
 		this.repaint();
 		try {
-			mente.sleep(3000);
+			mente.sleep(4000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

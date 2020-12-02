@@ -19,12 +19,12 @@ public class VisitorPremioCuarentena implements Visitor{
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		//si va a empezar la cuarentena, los detiene
-		if (!terminado) {
-			nave.setMovimiento(new MovimientoVerticalNulo(nave, MovimientoVerticalNulo.ABAJO));
-		}
+		if (!terminado)
+			nave.setDetenido(true);
 		else { //si ya hizo la cuarentena, ya termino => hay que devolverles el movimiento normal
-			nave.setMovimiento(new MovimientoVertical(nave, MovimientoVertical.ABAJO));
-			nave.setVida(nave.getVida());
+			nave.setDetenido(false);
+			/*nave.setMovimiento(new MovimientoVertical(nave, MovimientoVertical.ABAJO));
+			nave.setVida(nave.getVida()); */
 		}
 	}
 	
