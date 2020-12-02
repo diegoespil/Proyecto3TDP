@@ -24,7 +24,19 @@ public class Tanda {
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
 			int posY = r.nextInt(70)*(-1);
-			NaveEnemiga ne = nivel.getFabricaNaveAlpha().crearNaveEnemiga();
+			int tipoNave = r.nextInt(2)+1;
+			System.out.println("tipoNave "+tipoNave);
+			NaveEnemiga ne = null;
+			switch (tipoNave) {
+				case 1: {
+					ne = nivel.getFabricaNaveAlpha().crearNaveEnemiga();
+					break;
+				}
+				case 2: {
+					ne = nivel.getFabricaNaveBeta().crearNaveEnemiga();
+					break;
+				}
+			}
 			ne.setPosX(posX);
 			ne.setPosY(posY);
 			ne.getGrafica().setBounds(posX, posY, ne.getGrafica().getWidth(), ne.getGrafica().getHeight());
