@@ -5,7 +5,7 @@ import logica.visitor.VisitorProyectilEnemigo;
 
 public class ProyectilEnemigoAlpha extends ProyectilEnemigo {
 	
-	private static final String [] graficos = new String[] {path+subPath+"/proyectil3.gif"};
+	private static final String [] graficos = new String[] {path+subPath+"/proyectil2.gif"};
 	
 	public ProyectilEnemigoAlpha(int x, int y, int v, int d) {
 		super(x, y, v, d,graficos);
