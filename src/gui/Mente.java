@@ -5,13 +5,14 @@ import logica.juego.Juego;
 public class Mente extends Thread {
 	
 	private Juego juego;
+	private boolean endGame = false;
 	
 	public Mente() {
 		juego = Juego.getInstance();
 	}
 	
 	public void run() {
-		while (!juego.isGameOver()) {
+		while (true) {
 			try {
 				Thread.sleep(100);
 			} catch(Exception e) {
@@ -26,8 +27,12 @@ public class Mente extends Thread {
 			juego.dispararEntidades();
 			juego.removerEntidades();
 			//juego.checkJugador();
+			if (juego.isGameOver() && !endGame) {
+				endGame = true;
+				Gui.getInstance().gameOver();
+			}
 		}
-		Gui.getInstance().gameOver();
+		
 	}
 
 }

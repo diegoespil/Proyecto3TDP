@@ -155,13 +155,6 @@ public class Juego {
 		}
 	}
 	
-//	public void checkJugador() {
-//		if (!this.jugador.estaEnJuego()) {
-//			Gui.getInstance().gameOver();
-//			this.gameOver = true;
-//		}
-//	}
-	
 	public synchronized void removerEntidades() {
 		for (Entidad e: entidades) {
 			if (!e.estaEnJuego()) {
@@ -172,6 +165,7 @@ public class Juego {
 		if(!this.jugador.estaEnJuego()) {
 			entidadesAEliminar.add(jugador);
 			jugador.accept(visitorRemover);
+			
 		}
 		for (Entidad e: entidadesAEliminar) {
 			gui.remove(e.getGrafica().getLabel());
