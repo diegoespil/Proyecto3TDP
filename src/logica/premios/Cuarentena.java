@@ -1,5 +1,6 @@
 package logica.premios;
 
+import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
 import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
@@ -23,8 +24,7 @@ public class Cuarentena extends Temporal {
 
 	@Override
 	public void activar(NaveJugador nj) {
-		
-		
+		Juego.getInstance().activarCuarentena();
 	}
 
 }

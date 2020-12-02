@@ -2,6 +2,9 @@ package logica.juego;
 
 import java.awt.Rectangle;
 import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import gui.Gui;
 import logica.entidad.Entidad;
 import logica.naves.NaveJugador;
@@ -9,6 +12,7 @@ import logica.nivel.Nivel;
 import logica.nivel.Nivel1;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorDisparo;
+import logica.visitor.VisitorPremioCuarentena;
 import logica.visitor.VisitorRemover;
 
 public class Juego {
@@ -173,6 +177,31 @@ public class Juego {
 			gui.remove(e.getGrafica().getLabel());
 			entidades.remove(e);
 		}
+	}
+	
+	public synchronized void activarCuarentena() {
+		VisitorPremioCuarentena vpc = new VisitorPremioCuarentena();
+		System.out.println("Cuarentena activada");
+		//Recorre la lista la primera vez, asignando movimiento nulo
+	    for (int i=0; i<entidades.size(); i++) {
+			Entidad e = entidades.get(i);
+			if (e != null) e.accept(vpc);
+		} 
+	    TimerTask task = new TimerTask() {
+	        public void run() {
+	    		//cuando termina la cuarentena, asigna true para que la segunda vuelta
+	        	//les devuelva movimiento normal
+	        	System.out.println("cuarentena terminada");
+	    		vpc.setTerminado(true);
+	    		for (int i=0; i<entidades.size(); i++) {
+	    			Entidad e = entidades.get(i);
+	    			if (e != null) e.accept(vpc);
+	    		}
+	        }
+	    };
+	    Timer timer = new Timer("Timer");
+	    long delay = 5000L;
+	    timer.schedule(task, delay);
 	}
 	
 	public void aumentarPuntaje(int p) {
