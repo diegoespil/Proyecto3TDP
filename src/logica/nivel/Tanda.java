@@ -2,7 +2,6 @@ package logica.nivel;
 
 import java.util.LinkedList;
 import java.util.Random;
-
 import logica.entidad.Entidad;
 import logica.naves.NaveEnemiga;
 
@@ -24,7 +23,7 @@ public class Tanda {
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
 			int posY = (r.nextInt(100)*(-1))*(3);
-			int tipoNave = r.nextInt(2)+1;
+			int tipoNave = r.nextInt(3)+1;
 			NaveEnemiga ne = null;
 			switch (tipoNave) {
 				case 1: {
@@ -33,6 +32,10 @@ public class Tanda {
 				}
 				case 2: {
 					ne = nivel.getFabricaNaveBeta().crearNaveEnemiga();
+					break;
+				}
+				case 3: {
+					ne = nivel.getFabricaNaveGamma().crearNaveEnemiga();
 					break;
 				}
 			}

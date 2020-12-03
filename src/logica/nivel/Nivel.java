@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import logica.entidad.Entidad;
 import logica.factory.naveEnemiga.FabricaAlpha;
 import logica.factory.naveEnemiga.FabricaBeta;
+import logica.factory.naveEnemiga.FabricaGamma;
 import logica.factory.naveEnemiga.FabricaNaveEnemiga;
 import logica.factory.premio.FabricaCuarentena;
 import logica.factory.premio.FabricaPocion;
@@ -18,11 +19,10 @@ public abstract class Nivel {
 	protected int enemigos;
 	protected FabricaNaveEnemiga fabricaNaveAlpha;
 	protected FabricaNaveEnemiga fabricaNaveBeta;
+	protected FabricaNaveEnemiga fabricaNaveGamma;
 	protected FabricaPremio fabricaSuperArma;
 	protected FabricaPremio fabricaCuarentena;
 	protected FabricaPremio fabricaPocion;
-	protected FabricaPremio fabricaPrecioso;
-	protected FabricaPremio fabricaTemporal;
 	
 	protected LinkedList<Entidad> premios;
 	
@@ -34,6 +34,7 @@ public abstract class Nivel {
 		this.enemigos = enemigos;
 		this.fabricaNaveAlpha = new FabricaAlpha(this);
 		this.fabricaNaveBeta = new FabricaBeta(this);
+		this.fabricaNaveGamma = new FabricaGamma(this);
 		this.fabricaCuarentena = new FabricaCuarentena(this);
 		this.fabricaPocion = new FabricaPocion(this);
 		this.fabricaSuperArma = new FabricaSuperArma(this);
@@ -51,6 +52,10 @@ public abstract class Nivel {
 		return this.fabricaNaveBeta;
 	}
 	
+	public FabricaNaveEnemiga getFabricaNaveGamma() {
+		return this.fabricaNaveGamma;
+	}
+	
 	public FabricaPremio getFabricaCuarentena() {
 		return this.fabricaCuarentena;
 	}
@@ -59,16 +64,8 @@ public abstract class Nivel {
 		return this.fabricaPocion;
 	}
 	
-	public FabricaPremio getFabricaPrecioso() {
-		return this.fabricaPrecioso;
-	}
-	
 	public FabricaPremio getFabricaSuperArma() {
 		return this.fabricaSuperArma;
-	}
-	
-	public FabricaPremio getFabricaTemporal() {
-		return this.fabricaTemporal;
 	}
 	
 	abstract public Nivel nextLevel();
