@@ -38,6 +38,7 @@ public class NaveJugador extends Nave{
 			p.getGrafica().actualizar(1);
 		}
 		p.setPosY(posY-p.getGrafica().getHeight());
+		p.getGrafica().setBounds((posX+width)-(width/2)-10,posY-p.getGrafica().getHeight(), p.getGrafica().getWidth(), p.getGrafica().getHeight());
 		Juego.getInstance().agregarEntidad(p);
 		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
 	}

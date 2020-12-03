@@ -18,15 +18,16 @@ import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
 import logica.naves.NaveJugador;
 import java.awt.event.KeyAdapter;
+import javax.swing.JProgressBar;
 
 public class Gui extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane contentPane;
 	private Mente mente;
-	private ControlJugador controlJugador;
 	private static Gui instance;
 	private JLabel lblPuntaje;
+	private JProgressBar progressBar;
 
 	/**
 	 * Launch the application.
@@ -85,20 +86,38 @@ public class Gui extends JFrame {
 	    label.setBounds(0,0,600,617);
 	    icon.setImageObserver(label);
 	    
-	    lblPuntaje = new JLabel("Puntos: 0");
-	    lblPuntaje.setForeground(Color.WHITE);
-		lblPuntaje.setFont(new java.awt.Font("Tahoma", 1, 11));
-	    lblPuntaje.setBounds(500, 20, 100, 20);
+	    incializarLabels();
+	    
 	    
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
 	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
-	    
-
+		contentPane.add(progressBar,JLayeredPane.DRAG_LAYER);
+		
 		setContentPane(contentPane);
 	}
 	
 	
 	
+	private void incializarLabels() {
+		inicializarPuntos();
+		inicializarVida();
+	}
+
+	private void inicializarVida() {
+		progressBar = new JProgressBar();
+		progressBar.setBounds(20, 20, 120, 14);
+		progressBar.setForeground(Color.GREEN);
+		progressBar.setValue(100);
+	}
+
+	private void inicializarPuntos() {
+		lblPuntaje = new JLabel("Puntos: 0");
+	    lblPuntaje.setForeground(Color.WHITE);
+		lblPuntaje.setFont(new java.awt.Font("Tahoma", 1, 14));
+	    lblPuntaje.setBounds(500, 20, 100, 20);
+		
+	}
+
 	public static Gui getInstance() {
 		return instance;
 	}
@@ -142,52 +161,21 @@ public class Gui extends JFrame {
 			
 			public void keyReleased(KeyEvent e) {
 						jugador.getGrafica().actualizar(0);
+						jugador.setPosX((int)jugador.getGrafica().getLabel().getLocation().getX());
 			}
 		});
 		validate();
 		repaint();
 	}
 	
-	public static class ControlJugador implements KeyListener{
-
-		private static Juego juego;
-		private Entidad jugador;
-		
-		public ControlJugador() {
-			juego = Juego.getInstance();
-			jugador = juego.getJugador();;
-		}
-		
-		@Override
-		public void keyPressed(KeyEvent e) {
-			if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				System.out.println("mover izquierda");
-				jugador.getMovimiento().setDireccion(MovimientoHorizontal.IZQUIERDA);
-				jugador.getGrafica().actualizar(1);
-				jugador.mover();
-			}
-			else if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				System.out.println("mover derecha");
-				jugador.getMovimiento().setDireccion(MovimientoHorizontal.DERECHA);
-				jugador.getGrafica().actualizar(2);
-				jugador.mover();
-			}
-			
-		}
-
-		@Override
-		public void keyReleased(KeyEvent arg0) {
-			jugador.getGrafica().actualizar(0);
-		}
-
-		@Override
-		public void keyTyped(KeyEvent arg0) {
-			
-		}
-	}
+	
 
 	public void actualizarPuntaje() {
 		lblPuntaje.setText("Puntos: "+Juego.getInstance().getPuntaje());
+	}
+	
+	public void updateVida(int vida) {
+		progressBar.setValue(vida);
 	}
 
 	public void gameOver() {

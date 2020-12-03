@@ -169,7 +169,7 @@ public class Juego {
 		if(!this.jugador.estaEnJuego()) {
 			entidadesAEliminar.add(jugador);
 			jugador.accept(visitorRemover);
-			
+			Gui.getInstance().updateVida(0);
 		}
 		for (Entidad e: entidadesAEliminar) {
 			gui.remove(e.getGrafica().getLabel());
