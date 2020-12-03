@@ -1,5 +1,9 @@
 package logica.naves;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
+
 import gui.Gui;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;

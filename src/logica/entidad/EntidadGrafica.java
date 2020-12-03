@@ -34,10 +34,12 @@ public class EntidadGrafica extends JLabel{
 	}
 	
 	public void actualizar(int direccion) {
-		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.graficos[direccion]));
-		this.graficoActual.setImage(imageIcon.getImage());
-		//System.out.println("Pos x: "+entidad.getPosX()+" pos y "+entidad.getPosY());
-		//this.setBounds(entidad.getPosX(), entidad.getPosY(), graficoActual.getIconWidth(), graficoActual.getIconHeight());
-		//this.setIcon(graficoActual);
+		if(direccion < graficos.length) {
+			ImageIcon imageIcon = new ImageIcon(this.getClass().getResource(this.graficos[direccion]));
+			this.graficoActual.setImage(imageIcon.getImage());
+			this.setBounds(entidad.getPosX(), entidad.getPosY(), graficoActual.getIconWidth(), graficoActual.getIconHeight());
+			this.setIcon(graficoActual);
+		}
+
 	}
 }

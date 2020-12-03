@@ -14,7 +14,7 @@ public class Mente extends Thread {
 	public void run() {
 		while (true) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(80);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
