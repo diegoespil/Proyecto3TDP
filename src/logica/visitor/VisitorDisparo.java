@@ -1,7 +1,10 @@
 package logica.visitor;
 
 import java.awt.Rectangle;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
@@ -17,12 +20,14 @@ public class VisitorDisparo implements Visitor {
 
 	@Override
 	public void visitNaveEnemiga(NaveEnemiga nave) {
-		
 		NaveJugador nave2 = Juego.getInstance().getJugador();
 		Rectangle r1 = new Rectangle(nave.getPosX()+2,nave.getPosY()+2,nave.getGrafica().getGrafico().getIconHeight()-2,nave.getRango());
 		Rectangle r2 = new Rectangle(nave2.getPosX()+2,nave2.getPosY()+2,nave2.getGrafica().getGrafico().getIconWidth()-2,nave2.getGrafica().getGrafico().getIconHeight()-2);
 		if (r1.intersects(r2)) {
-			if ( !nave.estaDetenido() )nave.disparar();
+			if (!nave.estaDetenido()) {
+				nave.disparar();
+			}
+				
 		}
 		
 	}

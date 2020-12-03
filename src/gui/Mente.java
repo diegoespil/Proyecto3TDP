@@ -23,10 +23,13 @@ public class Mente extends Thread {
 				System.out.println("No hay entidades");
 				juego.inicializarEntidades();
 			}
+			if (juego.winGame()) {
+				System.out.println("winGame");
+				Gui.getInstance().win();
+			}
 			juego.detectarColisiones();
 			//juego.dispararEntidades();
 			juego.removerEntidades();
-			//juego.checkJugador();
 			if (juego.isGameOver() && !endGame) {
 				endGame = true;
 				Gui.getInstance().gameOver();

@@ -91,7 +91,7 @@ public class Gui extends JFrame {
 	    lblPuntaje.setBounds(500, 20, 100, 20);
 	    
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
-	    contentPane.add(lblPuntaje, JLayeredPane.POPUP_LAYER);
+	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
 	    
 
 		setContentPane(contentPane);
@@ -105,7 +105,7 @@ public class Gui extends JFrame {
 
 	public void agregarEntidad(JLabel label) {
 
-		contentPane.add(label, JLayeredPane.POPUP_LAYER);
+		contentPane.add(label, JLayeredPane.DRAG_LAYER);
 		this.validate();
 		this.repaint();
 	}
@@ -216,5 +216,17 @@ public class Gui extends JFrame {
 		contentPane.remove(lblLevel);
 		this.validate();
 		this.repaint();
+	}
+
+	public void win() {
+		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/win/win.gif"));
+		JLabel lblWin = new JLabel(icon);
+		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
+		lblWin.setBounds(200, 100, icon.getIconWidth(), icon.getIconHeight());
+		contentPane.add(lblWin, JLayeredPane.DRAG_LAYER);
+		this.validate();
+		this.repaint();
+		mente.stop();
+		
 	}
 }

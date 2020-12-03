@@ -22,7 +22,7 @@ public class Juego {
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
-	private boolean gameOver = false;
+	private boolean gameOver,win = false;
 	private int puntaje = 0;
 	private int contadorEnemigos;
 	private Visitor visitorRemover, visitorDisparo;
@@ -77,7 +77,6 @@ public class Juego {
 	public synchronized void inicializarEntidades() {
 		if (nivel != null) {
 			LinkedList<Entidad> naves = nivel.getTanda();
-			
 			if (naves != null) {	
 				for (Entidad e: naves) {
 					entidades.add(e);
@@ -87,12 +86,14 @@ public class Juego {
 			} 
 			else {
 				System.out.println("Next level");
-				Gui.getInstance().nextLevel();
 				nivel = nivel.nextLevel();
+				if (nivel != null)
+					Gui.getInstance().nextLevel();
 			}
 		} 
 		else {
-			gameOver = true;
+			System.out.println("Win");
+			win = true;
 		}
 	}
 
@@ -120,7 +121,7 @@ public class Juego {
 			//System.out.println("Colision");
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
-			Gui.getInstance().actualizarPuntaje();
+			
 		}
 	}
 
@@ -201,6 +202,7 @@ public class Juego {
 	
 	public void aumentarPuntaje(int p) {
 		puntaje+=p;
+		Gui.getInstance().actualizarPuntaje();
 	}
 	
 	public void restarEnemigo() {
@@ -213,6 +215,10 @@ public class Juego {
 	
 	public int getContadorEnemigos() {
 		return contadorEnemigos;
+	}
+	
+	public boolean winGame() {
+		return this.win;
 	}
 
 }
