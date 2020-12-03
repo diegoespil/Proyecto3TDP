@@ -18,8 +18,7 @@ public class FabricaAlpha extends FabricaNaveEnemiga {
 		
 		Alpha nave = new Alpha(0,0);
 		Random r = new Random();
-		int probabilidad = r.nextInt(101); 
-		
+		int probabilidad = r.nextInt(101); 		
 		if(probabilidad<=30) {
 			if(probabilidad>15) {
 				nave.setPowerUp(this.factoryPocion.crearPremio());

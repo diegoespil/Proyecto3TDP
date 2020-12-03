@@ -25,6 +25,7 @@ public class Cuarentena extends Temporal {
 	@Override
 	public void activar(NaveJugador nj) {
 		Juego.getInstance().activarCuarentena();
+		System.out.println("cuarentena activada");
 	}
 
 }
