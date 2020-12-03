@@ -11,6 +11,7 @@ import logica.visitor.VisitorNaveEnemiga;
 public abstract class NaveEnemiga extends Nave{
 	
 	protected int rango;
+	protected int contDisparo;
 	protected static final String subPath = "/enemigos";
 	protected int puntos;
 	protected Premio powerUp;
@@ -22,6 +23,7 @@ public abstract class NaveEnemiga extends Nave{
 		setVisitor(new VisitorNaveEnemiga(this));
 		this.puntos = puntos;
 		rango = 400;
+		contDisparo = 0;
 		powerUp = null;
 		detenido = false;
 	}

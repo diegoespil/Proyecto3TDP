@@ -21,10 +21,16 @@ public class Beta extends NaveEnemiga {
 	@SuppressWarnings("static-access")
 	@Override
 	public void disparar() {
-		ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,20,danio);
-		p.setPosY(posY-p.getGrafica().getHeight());
-		Juego.getInstance().agregarEntidad(p);
-		Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
+		if (contDisparo == 0) {
+			//disparar
+			ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,20,danio);
+			p.setPosY(posY-p.getGrafica().getHeight());
+			Juego.getInstance().agregarEntidad(p);
+			Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
+		}
+		contDisparo++;
+		if (contDisparo >= 5) //Este es el numero que determina cuanto espera para volver a disparar
+			contDisparo = 0;
 	}
 	
 }
