@@ -169,6 +169,7 @@ public class Gui extends JFrame {
 			else 
 				if (vida <= 75)
 					progressBar.setForeground(Color.ORANGE);
+				else progressBar.setForeground(Color.GREEN);
 		progressBar.setValue(vida);
 		lblVida.setText(""+vida);
 	}
