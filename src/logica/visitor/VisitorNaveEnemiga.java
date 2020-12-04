@@ -1,5 +1,6 @@
 package logica.visitor;
 
+import gui.Gui;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
@@ -18,6 +19,7 @@ public class VisitorNaveEnemiga implements Visitor {
 	
 	public void visitNaveJugador(NaveJugador nave) {
 		nave.setVida(0);
+		Gui.getInstance().updateVida(0);
 	}
 	
 	public void visitProyectilEnemigo(ProyectilEnemigo proyectil) {}

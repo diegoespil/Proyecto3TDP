@@ -1,21 +1,25 @@
 package logica.factory.naveEnemiga;
 
-import logica.naves.Beta;
+import logica.naves.Gamma;
 import logica.naves.NaveEnemiga;
 import logica.nivel.Nivel;
 
-public class FabricaBeta extends FabricaNaveEnemiga {
-
-	public FabricaBeta(Nivel n) {
+public class FabricaGamma extends FabricaNaveEnemiga {
+	
+	public FabricaGamma(Nivel n) {
 		super(n);
+		
 	}
-
+	
 	@Override
 	public NaveEnemiga crearNaveEnemiga() {
-		Beta nave = new Beta(0,0);
+		
+		Gamma nave = new Gamma(0,0);
 		nave.setPowerUp(crearPremio());
-		System.out.println(nave+" "+nave.getPowerUp() );
 		return nave;
 	}
 
 }
+
+
+

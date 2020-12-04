@@ -1,5 +1,6 @@
 package logica.visitor;
 
+import gui.Gui;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;
@@ -25,6 +26,7 @@ public class VisitorNaveJugador implements Visitor {
 	
 	public void visitPremio(Premio premio) {
 		premio.activar(nave);
+		Gui.getInstance().updateVida(nave.getVida());
 		System.out.println("El jugador agarro un premio");
 	}
 	

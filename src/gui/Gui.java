@@ -26,7 +26,7 @@ public class Gui extends JFrame {
 	private JLayeredPane contentPane;
 	private Mente mente;
 	private static Gui instance;
-	private JLabel lblPuntaje;
+	private JLabel lblPuntaje,lblVida;
 	private JProgressBar progressBar;
 
 	/**
@@ -92,6 +92,7 @@ public class Gui extends JFrame {
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
 	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
 		contentPane.add(progressBar,JLayeredPane.DRAG_LAYER);
+		contentPane.add(lblVida, JLayeredPane.DRAG_LAYER);
 		
 		setContentPane(contentPane);
 	}
@@ -108,6 +109,11 @@ public class Gui extends JFrame {
 		progressBar.setBounds(20, 20, 120, 14);
 		progressBar.setForeground(Color.GREEN);
 		progressBar.setValue(100);
+		
+		lblVida = new JLabel("100");
+		lblVida.setForeground(Color.WHITE);
+		lblVida.setFont(new java.awt.Font("Tahoma",1,14));
+		lblVida.setBounds(150, 18, 100, 20);
 	}
 
 	private void inicializarPuntos() {
@@ -175,7 +181,16 @@ public class Gui extends JFrame {
 	}
 	
 	public void updateVida(int vida) {
+		if (vida <= 25) 
+			progressBar.setForeground(Color.RED);
+		else 
+			if (vida <= 50)
+				progressBar.setForeground(Color.YELLOW);
+			else 
+				if (vida <= 75)
+					progressBar.setForeground(Color.ORANGE);
 		progressBar.setValue(vida);
+		lblVida.setText(""+vida);
 	}
 
 	public void gameOver() {
