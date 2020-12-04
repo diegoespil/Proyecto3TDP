@@ -2,13 +2,10 @@ package logica.premios;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import logica.entidad.Entidad;
 import logica.movimiento.MovimientoVertical;
 import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorPremio;
-import logica.visitor.VisitorPremioCuarentena;
 
 public class SuperArma extends Temporal {
 	

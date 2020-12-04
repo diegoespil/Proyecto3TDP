@@ -1,8 +1,6 @@
 package logica.visitor;
 
 import logica.juego.Juego;
-import logica.movimiento.MovimientoVertical;
-import logica.movimiento.MovimientoVerticalNulo;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
 import logica.premios.Premio;

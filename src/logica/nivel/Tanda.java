@@ -7,9 +7,9 @@ import logica.naves.NaveEnemiga;
 
 public class Tanda {
 
-	private LinkedList<Entidad> naves;
-	private int cantidad;
-	private Nivel nivel;
+	protected LinkedList<Entidad> naves;
+	protected int cantidad;
+	protected Nivel nivel;
 	
 	public Tanda(int cantidad, Nivel nivel) {
 		this.cantidad = cantidad;
@@ -23,7 +23,7 @@ public class Tanda {
 		for (int i = 0; i< this.cantidad; i++) {
 			int posX = r.nextInt(550);
 			int posY = (r.nextInt(100)*(-1))*(3);
-			int tipoNave = r.nextInt(3)+1;
+			int tipoNave = r.nextInt(2)+1;
 			NaveEnemiga ne = null;
 			switch (tipoNave) {
 				case 1: {
@@ -32,10 +32,6 @@ public class Tanda {
 				}
 				case 2: {
 					ne = nivel.getFabricaNaveBeta().crearNaveEnemiga();
-					break;
-				}
-				case 3: {
-					ne = nivel.getFabricaNaveGamma().crearNaveEnemiga();
 					break;
 				}
 			}

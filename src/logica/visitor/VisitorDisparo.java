@@ -1,10 +1,6 @@
 package logica.visitor;
 
 import java.awt.Rectangle;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.naves.NaveEnemiga;
 import logica.naves.NaveJugador;
@@ -14,9 +10,6 @@ import logica.proyectil.ProyectilJugador;
 
 public class VisitorDisparo implements Visitor {
 
-	
-	public VisitorDisparo() {
-	}
 
 	@Override
 	public void visitNaveEnemiga(NaveEnemiga nave) {
@@ -26,10 +19,8 @@ public class VisitorDisparo implements Visitor {
 		if (r1.intersects(r2)) {
 			if (!nave.estaDetenido()) {
 				nave.disparar();
-			}
-				
-		}
-		
+			}		
+		}	
 	}
 
 	public void visitNaveJugador(NaveJugador nave) {}

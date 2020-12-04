@@ -17,7 +17,7 @@ public class NaveJugador extends Nave{
 	protected boolean superArma;
 
 	public NaveJugador(int x, int y) {
-		super(x, y, graficos,5);
+		super(x, y, graficos,9);
 		setMovimiento( new MovimientoHorizontal(this,1) );
 		setVisitor(new VisitorNaveJugador(this));
 		setVida(100);

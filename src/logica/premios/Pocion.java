@@ -22,7 +22,7 @@ public class Pocion extends Precioso {
 	@Override
 	public void activar(NaveJugador nj) {
 		System.out.println("Pocion :: vida original = "+nj.getVida());
-		nj.setVida(nj.getVida()+15);
+		nj.setVida(nj.getVida()+30);
 		System.out.println("Pocion :: vida despues = "+nj.getVida());
 	}
 

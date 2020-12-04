@@ -1,7 +1,5 @@
 package logica.premios;
 
-import javax.swing.JLabel;
-
 import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.naves.NaveJugador;

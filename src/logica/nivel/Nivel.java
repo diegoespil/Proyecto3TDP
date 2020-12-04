@@ -1,7 +1,6 @@
 package logica.nivel;
 
 import java.util.LinkedList;
-
 import logica.entidad.Entidad;
 import logica.factory.naveEnemiga.FabricaAlpha;
 import logica.factory.naveEnemiga.FabricaBeta;
@@ -11,7 +10,6 @@ import logica.factory.premio.FabricaCuarentena;
 import logica.factory.premio.FabricaPocion;
 import logica.factory.premio.FabricaPremio;
 import logica.factory.premio.FabricaSuperArma;
-import logica.juego.Juego;
 
 
 public abstract class Nivel {
@@ -22,15 +20,10 @@ public abstract class Nivel {
 	protected FabricaNaveEnemiga fabricaNaveGamma;
 	protected FabricaPremio fabricaSuperArma;
 	protected FabricaPremio fabricaCuarentena;
-	protected FabricaPremio fabricaPocion;
-	
-	protected LinkedList<Entidad> premios;
-	
+	protected FabricaPremio fabricaPocion;	
 	protected int cantidadTandas;
-	protected Juego juego;
 	
-	public Nivel(int enemigos, int cantTandas, Juego juego) {
-		this.juego = juego;
+	public Nivel(int enemigos, int cantTandas) {
 		this.enemigos = enemigos;
 		this.fabricaNaveAlpha = new FabricaAlpha(this);
 		this.fabricaNaveBeta = new FabricaBeta(this);
@@ -38,9 +31,6 @@ public abstract class Nivel {
 		this.fabricaCuarentena = new FabricaCuarentena(this);
 		this.fabricaPocion = new FabricaPocion(this);
 		this.fabricaSuperArma = new FabricaSuperArma(this);
-		
-		this.premios = new LinkedList<Entidad>();
-		
 		this.cantidadTandas = cantTandas;
 	}
 	
@@ -74,8 +64,4 @@ public abstract class Nivel {
 
 	public abstract LinkedList<Entidad> getTanda();
 
-	public Juego getJuego() {
-		// TODO Auto-generated method stub
-		return juego;
-	}
 }

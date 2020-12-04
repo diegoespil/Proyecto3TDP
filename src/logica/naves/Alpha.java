@@ -1,16 +1,10 @@
 package logica.naves;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-
 import gui.Gui;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
 import logica.movimiento.MovimientoVerticalAcelerado;
-import logica.proyectil.Proyectil;
 import logica.proyectil.ProyectilEnemigo;
-import logica.proyectil.ProyectilEnemigoAlpha;
 import logica.proyectil.ProyectilEnemigoBeta;
 
 public class Alpha extends NaveEnemiga {

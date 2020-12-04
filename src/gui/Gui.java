@@ -2,18 +2,13 @@ package gui;
 
 import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoHorizontal;
 import logica.naves.NaveJugador;
@@ -51,21 +46,7 @@ public class Gui extends JFrame {
 	 * Create the frame.
 	 */
 	private Gui() {
-		
-//Segunda opcion para iniciar la gui
-//		fondo = new JLabel();
-//		fondo.setIcon(new ImageIcon(Gui.class.getResource("/resources/img/fondo/fondo.gif")));
-//		fondo.setBounds(0,0,600,617);
-//		fondo.setLayout(null);
-//		setContentPane(fondo);
-//		iniciarJuego();
-//		mente = new Mente(juego);
-//		mente.start();
-//	    pack();
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
-//		setSize(600,650);
-//		setLocationRelativeTo(null);
-//=======
+
 		instance = this;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
@@ -86,8 +67,7 @@ public class Gui extends JFrame {
 	    label.setBounds(0,0,600,617);
 	    icon.setImageObserver(label);
 	    
-	    incializarLabels();
-	    
+	    incializarLabels(); 
 	    
 	    contentPane.add(label, JLayeredPane.DEFAULT_LAYER);
 	    contentPane.add(lblPuntaje, JLayeredPane.DRAG_LAYER);
@@ -202,6 +182,7 @@ public class Gui extends JFrame {
 		this.repaint();
 	}
 
+	@SuppressWarnings("static-access")
 	public void nextLevel() {
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/level/levelUp.gif"));
 		JLabel lblLevel = new JLabel(icon);
@@ -221,6 +202,7 @@ public class Gui extends JFrame {
 		this.repaint();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void win() {
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/win/win.gif"));
 		JLabel lblWin = new JLabel(icon);

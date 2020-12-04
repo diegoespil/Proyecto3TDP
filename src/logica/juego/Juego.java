@@ -35,7 +35,7 @@ public class Juego {
 	private Juego() {
 		this.gui = Gui.getInstance();
 		System.out.println("Gui "+gui);
-		this.nivel = new Nivel1(this);
+		this.nivel = new Nivel1();
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
@@ -43,16 +43,9 @@ public class Juego {
 		contadorEnemigos = 0;
 		visitorRemover = new VisitorRemover();
 		visitorDisparo = new VisitorDisparo();
-//		inicializarEntidades();
-		
-		//agregarEntidades();
-	}
-/*	
-	lo sacraria a este metodo
-	public void setGui(Gui gui) {
-		this.gui=gui;
-	}
-*/	
+
+	}	
+
 	public static Juego getInstance() {
 		if (instance == null)
 			instance = new Juego();
@@ -113,20 +106,15 @@ public class Juego {
 	}
 
 	private void hayColision(Entidad e1, Entidad e2) {
-		//System.out.println("Pos x "+e1.getPosX()+"pos y "+e1.getPosY()+"ancho "+e1.getGrafica().getGrafico().getIconWidth()+" alto "+e1.getGrafica().getGrafico().getIconHeight());
-		//System.out.println("Pos x "+e2.getPosX()+"pos y "+e2.getPosY()+"ancho "+e2.getGrafica().getGrafico().getIconWidth()+" alto "+e2.getGrafica().getGrafico().getIconHeight());
 		Rectangle r1 = new Rectangle(e1.getPosX(),e1.getPosY(),32,32);
 		Rectangle r2 = new Rectangle(e2.getPosX(),e2.getPosY(),32,32);
 		if (r1.intersects(r2)) {
-			//System.out.println("Colision");
 			e1.accept(e2.getVisitor());
 			e2.accept(e1.getVisitor());
-			
 		}
 	}
 
 	public boolean isGameOver() {
-		// TODO Auto-generated method stub
 		return this.gameOver;
 	}
 	
@@ -134,15 +122,13 @@ public class Juego {
 		gameOver = true;
 	}
 
-	synchronized public void moverEntidades() {
-		// TODO Auto-generated method stub
+	public synchronized void moverEntidades() {
 		for (int i= 0; i< entidades.size();i++) {
 			entidades.get(i).mover();
 		}
 	}
 
 	public boolean hayEntidades() {
-		// TODO Auto-generated method stub
 		return entidades.size()>0;
 	}
 
