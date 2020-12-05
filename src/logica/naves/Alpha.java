@@ -1,11 +1,8 @@
 package logica.naves;
 
-import gui.Gui;
-import logica.juego.Juego;
+import logica.arma.ArmaEnemigaAlpha;
 import logica.movimiento.MovimientoVertical;
 import logica.movimiento.MovimientoVerticalAcelerado;
-import logica.proyectil.ProyectilEnemigo;
-import logica.proyectil.ProyectilEnemigoBeta;
 
 public class Alpha extends NaveEnemiga {
 
@@ -14,31 +11,14 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveAlphaRight.gif"};
 	
 	public Alpha(int x, int y){
-		super(x, y,5,graficos,20);
+		super(x, y,5,graficos,new ArmaEnemigaAlpha(),20,15,5);
 		setVida(50);
-		setDanio(15);
 	}
 	
 	@Override
 	public void setVida(int vida) {
 		super.setVida(vida);
 		if (getVida() <= 10 && estaEnJuego() && !estaDetenido() )
-			setMovimiento(new MovimientoVerticalAcelerado(this, MovimientoVertical.ABAJO));
-		
+			setMovimiento(new MovimientoVerticalAcelerado(this, MovimientoVertical.ABAJO));	
 	}
-	
-	@Override
-	public void disparar() {
-		if (contDisparo == 0) {
-			//disparar
-			ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,20,danio);
-			p.setPosY(posY-p.getGrafica().getHeight());
-			Juego.getInstance().agregarEntidad(p);
-			Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
-		}
-		contDisparo++;
-		if (contDisparo >= 5) //Este es el numero que determina cuanto espera para volver a disparar
-			contDisparo = 0;
-	}
-
 }

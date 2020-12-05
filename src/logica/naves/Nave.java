@@ -1,14 +1,16 @@
 package logica.naves;
 
+import logica.arma.Arma;
 import logica.entidad.Entidad;
 
 public abstract class Nave extends Entidad{
 
 	protected int vida;
-	protected int danio;
+	protected Arma arma;
 	
-	public Nave(int x, int y, String [] graficos,int vel){
+	public Nave(int x, int y, String [] graficos,int vel,Arma arma){
 		super(x,y,graficos,vel);
+		this.arma = arma;
 	}
 	
 	public int getVida() {
@@ -20,15 +22,13 @@ public abstract class Nave extends Entidad{
 		if (vida <= 0)
 			setEnJuego(false);
 	}
-	
-	public int getDanio() {
-		return danio;
-	}
-	
-	public void setDanio(int danio) {
-		this.danio = danio;
-	}
 
-	public abstract void disparar();
+	public Arma getArma() {
+		return this.arma;
+	}
+	
+	public void setArma(Arma arma) {
+		this.arma = arma;
+	}
 	
 }

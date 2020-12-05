@@ -2,6 +2,9 @@ package logica.premios;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import logica.arma.Arma;
+import logica.arma.ArmaSuper;
 import logica.movimiento.MovimientoVertical;
 import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
@@ -26,18 +29,12 @@ public class SuperArma extends Temporal {
 	@Override
 	public void activar(NaveJugador nj) {
 	
-		System.out.println("danio original = "+nj.getDanio());
-		
-		nj.setDanio(nj.getDanio()+danio_temporal);
-		nj.setSuperArma(true);
-		
-		System.out.println("danio durante = "+nj.getDanio());
+		Arma aux = nj.getArma();
+		nj.setArma(new ArmaSuper(aux.getDanio()*2));
+	
 	    TimerTask task = new TimerTask() {
 	        public void run() {
-	    		//cuando termina el timepo, le devuelve el danio original
-	    		nj.setDanio(nj.getDanio()-danio_temporal);
-	    		nj.setSuperArma(false);
-	    		System.out.println("danio despues = "+nj.getDanio());
+	        	nj.setArma(aux);
 	        }
 	    };
 	    Timer timer = new Timer("Timer");

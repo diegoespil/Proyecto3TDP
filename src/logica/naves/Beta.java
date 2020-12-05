@@ -1,9 +1,6 @@
 package logica.naves;
 
-import gui.Gui;
-import logica.juego.Juego;
-import logica.proyectil.ProyectilEnemigo;
-import logica.proyectil.ProyectilEnemigoBeta;
+import logica.arma.ArmaEnemigaBeta;
 
 public class Beta extends NaveEnemiga {
 
@@ -12,25 +9,7 @@ public class Beta extends NaveEnemiga {
 			path+subPath+"/naveBetaRight.gif"};
 	
 	public Beta(int x, int y) {
-
-		super(x, y, 5,graficos,30);
+		super(x, y, 5,graficos,new ArmaEnemigaBeta(),30,30,5);
 		setVida(100);
-		setDanio(30);
 	}
-
-	@SuppressWarnings("static-access")
-	@Override
-	public void disparar() {
-		if (contDisparo == 0) {
-			//disparar
-			ProyectilEnemigo p = new ProyectilEnemigoBeta(posX,posY+20,20,danio);
-			p.setPosY(posY-p.getGrafica().getHeight());
-			Juego.getInstance().agregarEntidad(p);
-			Gui.getInstance().agregarEntidad(p.getGrafica().getLabel());
-		}
-		contDisparo++;
-		if (contDisparo >= 5) //Este es el numero que determina cuanto espera para volver a disparar
-			contDisparo = 0;
-	}
-	
 }
