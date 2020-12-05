@@ -3,6 +3,8 @@ package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,7 +17,7 @@ import logica.naves.NaveJugador;
 import java.awt.event.KeyAdapter;
 import javax.swing.JProgressBar;
 
-public class Gui extends JFrame {
+public class Gui extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane contentPane;
@@ -23,6 +25,7 @@ public class Gui extends JFrame {
 	private static Gui instance;
 	private JLabel lblPuntaje,lblVida;
 	private JProgressBar progressBar;
+	private KeyAdapter keyAdapter;
 
 	/**
 	 * Launch the application.
@@ -117,7 +120,7 @@ public class Gui extends JFrame {
 
 	private void iniciarJuego() {
 		NaveJugador jugador = Juego.getInstance().getJugador();
-		this.addKeyListener(new KeyAdapter() {
+		keyAdapter = new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				int code = e.getKeyCode();
@@ -149,7 +152,8 @@ public class Gui extends JFrame {
 						jugador.getGrafica().actualizar(0);
 						jugador.setPosX((int)jugador.getGrafica().getLabel().getLocation().getX());
 			}
-		});
+		};
+		this.addKeyListener(keyAdapter);
 		validate();
 		repaint();
 	}
@@ -205,6 +209,7 @@ public class Gui extends JFrame {
 
 	@SuppressWarnings("deprecation")
 	public void win() {
+		this.removeKeyListener(keyAdapter);
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/win/win.gif"));
 		JLabel lblWin = new JLabel(icon);
 		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
@@ -213,6 +218,5 @@ public class Gui extends JFrame {
 		this.validate();
 		this.repaint();
 		mente.stop();
-		
 	}
 }
