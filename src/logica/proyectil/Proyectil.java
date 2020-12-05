@@ -2,7 +2,7 @@ package logica.proyectil;
 
 import logica.entidad.Entidad;
 
-public abstract class Proyectil extends Entidad {
+public abstract class Proyectil extends Entidad{
 
 	protected int danio;
 	protected static final String subPath = "/proyectiles";
@@ -20,6 +20,5 @@ public abstract class Proyectil extends Entidad {
 	public int getDanio() {
 		return danio;
 	}
-
 	
 }

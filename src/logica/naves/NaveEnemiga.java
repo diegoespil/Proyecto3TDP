@@ -1,6 +1,8 @@
 package logica.naves;
 
 import javax.swing.JLabel;
+
+import logica.arma.Arma;
 import logica.juego.Juego;
 import logica.movimiento.MovimientoVertical;
 import logica.premios.Premio;
@@ -17,8 +19,8 @@ public abstract class NaveEnemiga extends Nave{
 	protected Premio powerUp;
 	protected boolean detenido;
 
-	public NaveEnemiga(int x, int y, int vel, String [] graficos, int puntos) {
-		super(x, y, graficos, vel);
+	public NaveEnemiga(int x, int y, int vel, String [] graficos,Arma arma, int puntos, int danio,int retardo) {
+		super(x, y, graficos, vel,arma);
 		setMovimiento(new MovimientoVertical(this,MovimientoVertical.ABAJO));
 		setVisitor(new VisitorNaveEnemiga(this));
 		this.puntos = puntos;
