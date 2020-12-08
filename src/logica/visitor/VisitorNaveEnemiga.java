@@ -17,6 +17,7 @@ public class VisitorNaveEnemiga implements Visitor {
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
+	//Metodo para que la nave enemiga visite al jugador, y le setea la vida en 0, y le avisa a la Gui que actualice la vida.
 	public void visitNaveJugador(NaveJugador nave) {
 		nave.setVida(0);
 		Gui.getInstance().updateVida(0);

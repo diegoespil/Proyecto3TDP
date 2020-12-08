@@ -6,6 +6,7 @@ import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorPremio;
 
+//Clase que representa el premio Cuarentena, el cual su funcion es inmovilizar a la naves enemigas por un tiempo determinado.
 public class Cuarentena extends Temporal {
 
 	protected static final String[] graficos= {"/resources/img/powerUps/pw3.gif"};
@@ -25,7 +26,6 @@ public class Cuarentena extends Temporal {
 	@Override
 	public void activar(NaveJugador nj) {
 		Juego.getInstance().activarCuarentena();
-		System.out.println("cuarentena activada");
 	}
 
 }

@@ -4,6 +4,7 @@ import logica.entidad.Entidad;
 import logica.juego.Juego;
 import logica.naves.NaveJugador;
 
+//Clase abstracta que representa un powerup.
 public abstract class Premio extends Entidad {
 
 	public Premio(int x, int y,String[] graficos) {

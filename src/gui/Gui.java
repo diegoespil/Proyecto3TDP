@@ -3,7 +3,6 @@ package gui;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,6 +16,7 @@ import logica.naves.NaveJugador;
 import java.awt.event.KeyAdapter;
 import javax.swing.JProgressBar;
 
+//Esta clase se encarga de mostrar graficamente el juego, aplica el patron de diseño Singleton
 public class Gui extends JFrame{
 
 	private static final long serialVersionUID = 1L;
@@ -81,12 +81,13 @@ public class Gui extends JFrame{
 	}
 	
 	
-	
+	//Metodo para inicializar los labels de puntos y salud
 	private void incializarLabels() {
 		inicializarPuntos();
 		inicializarVida();
 	}
 
+	//Metodo para mostrar graficamente la salud del jugador
 	private void inicializarVida() {
 		progressBar = new JProgressBar();
 		progressBar.setBounds(20, 20, 120, 14);
@@ -99,6 +100,7 @@ public class Gui extends JFrame{
 		lblVida.setBounds(150, 18, 100, 20);
 	}
 
+	//Metodo para mostrar graficamente los puntos del jugador
 	private void inicializarPuntos() {
 		lblPuntaje = new JLabel("Puntos: 0");
 	    lblPuntaje.setForeground(Color.WHITE);
@@ -107,10 +109,12 @@ public class Gui extends JFrame{
 		
 	}
 
+	//Metodo que retorna la instancia de la clase
 	public static Gui getInstance() {
 		return instance;
 	}
 
+	//Metodo que agrega y muestra graficamente un label que representa una entidad en el juegp
 	public void agregarEntidad(JLabel label) {
 
 		contentPane.add(label, JLayeredPane.DRAG_LAYER);
@@ -118,6 +122,7 @@ public class Gui extends JFrame{
 		this.repaint();
 	}
 
+	//Metodo que inicia una instancia de la clase Juego, y ademas agrega un control al jugador
 	private void iniciarJuego() {
 		NaveJugador jugador = Juego.getInstance().getJugador();
 		keyAdapter = new KeyAdapter() {
@@ -135,10 +140,6 @@ public class Gui extends JFrame{
 					jugador.getMovimiento().setDireccion(MovimientoHorizontal.DERECHA);
 					jugador.getGrafica().actualizar(2);
 					jugador.mover();
-					break;
-					}
-				case KeyEvent.VK_UP: { 	//para testear cuarentena, sacar despues
-					Juego.getInstance().activarCuarentena();
 					break;
 					}
 				case KeyEvent.VK_SPACE: {
@@ -159,11 +160,12 @@ public class Gui extends JFrame{
 	}
 	
 	
-
+	//Metodo que actualiza el label del puntaje
 	public void actualizarPuntaje() {
 		lblPuntaje.setText("Puntos: "+Juego.getInstance().getPuntaje());
 	}
 	
+	//Metodo que actualiza la vida del jugador graficamente
 	public void updateVida(int vida) {
 		if (vida <= 25) 
 			progressBar.setForeground(Color.RED);
@@ -178,7 +180,9 @@ public class Gui extends JFrame{
 		lblVida.setText(""+vida);
 	}
 
+	//Metodo que indica graficamente que perdio el juego
 	public void gameOver() {
+		this.removeKeyListener(keyAdapter);
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/gameOver/gameOver.gif"));
 		JLabel lblGameOver = new JLabel(icon,SwingConstants.CENTER);
 		lblGameOver.setSize(icon.getIconWidth(), icon.getIconHeight());
@@ -187,11 +191,12 @@ public class Gui extends JFrame{
 		this.repaint();
 	}
 
+	//Metodo que indica graficamente que avanzo de nivel
 	@SuppressWarnings("static-access")
 	public void nextLevel() {
+		this.removeKeyListener(keyAdapter);
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/level/levelUp.gif"));
 		JLabel lblLevel = new JLabel(icon);
-		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
 		lblLevel.setBounds(100, 200, icon.getIconWidth(), icon.getIconHeight());
 		contentPane.add(lblLevel, JLayeredPane.DRAG_LAYER);
 		this.validate();
@@ -202,17 +207,18 @@ public class Gui extends JFrame{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.addKeyListener(keyAdapter);
 		contentPane.remove(lblLevel);
 		this.validate();
 		this.repaint();
 	}
 
+	//Metodo que indica graficamente que gano el juego
 	@SuppressWarnings("deprecation")
 	public void win() {
 		this.removeKeyListener(keyAdapter);
 		ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/win/win.gif"));
 		JLabel lblWin = new JLabel(icon);
-		//lblLevel.setSize(icon.getIconWidth(), icon.getIconHeight());
 		lblWin.setBounds(200, 100, icon.getIconWidth(), icon.getIconHeight());
 		contentPane.add(lblWin, JLayeredPane.DRAG_LAYER);
 		this.validate();

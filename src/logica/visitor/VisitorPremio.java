@@ -16,6 +16,7 @@ public class VisitorPremio implements Visitor {
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
+	//Metodo que establece la colision con el jugador, e indica que el premio ya no debe estar en el juego.
 	public void visitNaveJugador(NaveJugador nave) {
 		premio.setEnJuego(false);
 	}

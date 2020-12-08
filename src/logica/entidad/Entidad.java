@@ -4,6 +4,9 @@ import logica.juego.Juego;
 import logica.movimiento.Movimiento;
 import logica.visitor.Visitor;
 
+//Esta clase representa una Entidad abstracta del juego, la cual va a tener una posicion, una velocidad, una EntidadGrafica para
+//representarla graficamente, un Movimiento que va a ser establecido al crear las clases concretas, y un Visitor, el cual 
+//me va a facilitar la colision entre distintas entidades del juego.
 public abstract class Entidad {
 
 	protected Visitor visitor;
@@ -24,7 +27,7 @@ public abstract class Entidad {
 		this.velocidad = vel;
 		enJuego = true;
 	}
-
+	
 	public int getPosX() {
 		return this.posX;
 	}
@@ -82,7 +85,8 @@ public abstract class Entidad {
 	}
 	
 	public abstract void accept(Visitor v);
-
+	
+	//Metodo que avisa al juego que debe quitarse la entidad
 	public void morir() {
 		enJuego = false;
 		Juego.getInstance().quitarEntidad(this);

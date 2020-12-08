@@ -4,6 +4,7 @@ import logica.naves.Alpha;
 import logica.naves.NaveEnemiga;
 import logica.nivel.Nivel;
 
+//Esta clase representa la creacion de naves enemigas de tipo Alpha
 public class FabricaAlpha extends FabricaNaveEnemiga {
 
 	public FabricaAlpha(Nivel n) {
@@ -16,7 +17,6 @@ public class FabricaAlpha extends FabricaNaveEnemiga {
 		
 		Alpha nave = new Alpha(0,0);
 		nave.setPowerUp(crearPremio());
-		System.out.println(nave+" "+nave.getPowerUp() );
 		return nave;
 	}
 

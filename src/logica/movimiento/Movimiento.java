@@ -2,6 +2,7 @@ package logica.movimiento;
 
 import logica.entidad.Entidad;
 
+//Clase abstracta que representa el movimiento de las entidades, se aplica el patron de diseño Strategy.
 public abstract class Movimiento {
 	
 	protected int direccion;

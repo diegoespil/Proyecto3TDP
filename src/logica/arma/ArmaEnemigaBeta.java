@@ -11,6 +11,8 @@ public class ArmaEnemigaBeta extends ArmaEnemiga{
 		super(20, 30, 5);
 	}
 
+	//Metodo que crea un proyectil, tiene un control a partir de la cantidad de disparos permitido
+		//para evitar que se creen muchos disparos juntos.  Agrega el proyectil al juego y a la grafica
 	@Override
 	public void disparar(int x, int y) {
 		if (contarDisparo == 0) {

@@ -13,6 +13,7 @@ public class MovimientoVertical extends Movimiento {
 		super(e, d);
 	}
 	
+	//Metodo que mueve el label verticalmente, y actualiza la posicion de la entidad
 	public void mover() {
 		JLabel lbl = this.entidad.getGrafica().getLabel();
 		lbl.setBounds(lbl.getX(), lbl.getY()  + (direccion * this.entidad.getVelocidad()), lbl.getWidth(), lbl.getHeight());

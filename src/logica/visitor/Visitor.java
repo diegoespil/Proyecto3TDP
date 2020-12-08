@@ -6,6 +6,7 @@ import logica.premios.Premio;
 import logica.proyectil.ProyectilEnemigo;
 import logica.proyectil.ProyectilJugador;
 
+//Interface que representa el patron de diseño Visitor
 public interface Visitor {
 
 	public abstract void visitNaveEnemiga(NaveEnemiga nave);

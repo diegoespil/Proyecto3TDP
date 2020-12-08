@@ -11,10 +11,10 @@ import logica.factory.premio.FabricaPocion;
 import logica.factory.premio.FabricaPremio;
 import logica.factory.premio.FabricaSuperArma;
 
-
+//Clase abstracta que representa el Nivel del juego, cada nivel tendra acceso para crear todo tipo
+//de fabricas de naves enemigas como de premios. Cada nivel tiene una cierta cantidad de enemigos, y de tandas.
 public abstract class Nivel {
 
-	protected int enemigos;
 	protected FabricaNaveEnemiga fabricaNaveAlpha;
 	protected FabricaNaveEnemiga fabricaNaveBeta;
 	protected FabricaNaveEnemiga fabricaNaveGamma;
@@ -23,8 +23,7 @@ public abstract class Nivel {
 	protected FabricaPremio fabricaPocion;	
 	protected int cantidadTandas;
 	
-	public Nivel(int enemigos, int cantTandas) {
-		this.enemigos = enemigos;
+	public Nivel(int cantTandas) {
 		this.fabricaNaveAlpha = new FabricaAlpha(this);
 		this.fabricaNaveBeta = new FabricaBeta(this);
 		this.fabricaNaveGamma = new FabricaGamma(this);
@@ -59,9 +58,11 @@ public abstract class Nivel {
 	}
 	
 	abstract public Nivel nextLevel();
-	
-	abstract public int getCantidadEnemigos();
 
 	public abstract LinkedList<Entidad> getTanda();
+	
+	public int getCantidadTandas() {
+		return this.cantidadTandas;
+	}
 
 }

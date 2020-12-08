@@ -11,9 +11,9 @@ public class FabricaGamma extends FabricaNaveEnemiga {
 		
 	}
 	
+	//Esta clase representa la creacion de naves enemigas de tipo Gamma
 	@Override
 	public NaveEnemiga crearNaveEnemiga() {
-		
 		Gamma nave = new Gamma(0,0);
 		nave.setPowerUp(crearPremio());
 		return nave;

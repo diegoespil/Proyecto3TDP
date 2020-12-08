@@ -17,6 +17,7 @@ public class VisitorProyectilEnemigo implements Visitor{
 	
 	public void visitNaveEnemiga(NaveEnemiga nave) {}
 	
+	//Metodo que actualiza la vida del jugador cuando colisiona el proyectil de la nave enemiga.
 	public void visitNaveJugador(NaveJugador nave) {
 		nave.setVida( nave.getVida() - proyectil.getDanio() );
 		proyectil.setEnJuego(false);

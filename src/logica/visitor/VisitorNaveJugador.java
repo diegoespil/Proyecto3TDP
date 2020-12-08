@@ -24,10 +24,10 @@ public class VisitorNaveJugador implements Visitor {
 
 	public void visitProyectilJugador(ProyectilJugador proyectil) {}
 	
+	//Metodo que activa el premio, y actualiza la vida en la gui.
 	public void visitPremio(Premio premio) {
 		premio.activar(nave);
 		Gui.getInstance().updateVida(nave.getVida());
-		System.out.println("El jugador agarro un premio");
 	}
 	
 }

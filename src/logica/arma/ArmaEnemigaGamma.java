@@ -11,6 +11,8 @@ public class ArmaEnemigaGamma extends ArmaEnemiga{
 		super(15, 35, 10);
 	}
 
+	//Metodo que crea un proyectil, tiene un control a partir de la cantidad de disparos permitido
+	//para evitar que se creen muchos disparos juntos.  Agrega el proyectil al juego y a la grafica
 	@Override
 	public void disparar(int x, int y) {
 		if (contarDisparo == 0) {

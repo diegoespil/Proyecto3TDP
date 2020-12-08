@@ -1,5 +1,6 @@
 package logica.premios;
 
+//Clase abstracta que representa un premio temporal
 public abstract class Temporal extends Premio {
 	
 	protected int tiempo;

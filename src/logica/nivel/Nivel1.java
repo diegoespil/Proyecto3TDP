@@ -3,10 +3,11 @@ package logica.nivel;
 import java.util.LinkedList;
 import logica.entidad.Entidad;
 
+//Clase que representa el Nivel 1 del juego, se inicia con 3 tandas de enemigos.
 public class Nivel1 extends Nivel {
 
 	public Nivel1() {
-		super(16,3);
+		super(3);
 	}
 
 	@Override
@@ -14,11 +15,8 @@ public class Nivel1 extends Nivel {
 		return new Nivel2();
 	}
 
-	@Override
-	public int getCantidadEnemigos() {
-		return this.enemigos;
-	}
-
+	//Metodo que devuelve un listado con la tanda de naves enemigas. Si la cantidad de tandas que quedan 
+	//es una, entonces sale una tanda especial
 	@Override
 	public LinkedList<Entidad> getTanda() {
 		Tanda tanda = null;

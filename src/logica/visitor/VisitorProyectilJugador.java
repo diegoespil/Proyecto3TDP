@@ -14,11 +14,10 @@ public class VisitorProyectilJugador implements Visitor {
 		this.proyectil = pj;
 	}
 	
+	//Metodo que actualiza la vida de la nave enemiga al colision con un proyectil del jugador
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		nave.setVida( nave.getVida() - proyectil.getDanio() );
 		proyectil.setEnJuego(false);
-		//System.out.println("deje al enemigo con "+nave.getVida()+" de vida");
-		//System.out.println("El enemigo quedo en juego: "+nave.estaEnJuego());
 	}
 	
 	public void visitNaveJugador(NaveJugador nave) {}

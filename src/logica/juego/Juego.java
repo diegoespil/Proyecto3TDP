@@ -15,6 +15,10 @@ import logica.visitor.VisitorDisparo;
 import logica.visitor.VisitorPremioCuarentena;
 import logica.visitor.VisitorRemover;
 
+
+//Esta clase representa el Juego y aplica el patron de diseño Singleton. Aqui se crea la NaveJugador, el Nivel, 
+//y se mantiene un listado de todas las entidades. Ademas el juego tiene dos Visitor, los cuales son utilizados para que las 
+//naves enemigas disparen y otro para eliminar entidades del juego.
 public class Juego {
 	
 	private Gui gui;
@@ -34,7 +38,6 @@ public class Juego {
 	
 	private Juego() {
 		this.gui = Gui.getInstance();
-		System.out.println("Gui "+gui);
 		this.nivel = new Nivel1();
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42);
 		this.entidades = new LinkedList<Entidad>();
@@ -43,30 +46,27 @@ public class Juego {
 		contadorEnemigos = 0;
 		visitorRemover = new VisitorRemover();
 		visitorDisparo = new VisitorDisparo();
-
 	}	
 
+	//Este metodo permite obtener una unica instancia de esta clase
 	public static Juego getInstance() {
 		if (instance == null)
 			instance = new Juego();
 		return instance;
 	}
 
-	public void agregarEntidades() {
-		for (Entidad e: entidades)
-			gui.agregarEntidad(e.getGrafica().getLabel());
-		
-	}
-
+	//Metodo para agregar el jugador a la Gui
 	private void agregarJugador() {
-		Gui.getInstance().agregarEntidad(jugador.getGrafica().getLabel());
-		
+		gui.agregarEntidad(jugador.getGrafica().getLabel());
 	}
 	
+	//Metodo para agregar una entidad a la lista de entidades
 	public void agregarEntidad(Entidad e) {
 		entidades.add(e);
 	}
 
+	//Metodo para inicializar las entidades del juego, al nivel se le solicita una tanda y se agregan al listado
+	//y a la gui. Cuando se termina la tanda, se pasa de nivel, y si no hay mas niveles gana el juego.
 	public synchronized void inicializarEntidades() {
 		if (nivel != null) {
 			LinkedList<Entidad> naves = nivel.getTanda();
@@ -78,22 +78,22 @@ public class Juego {
 				}
 			} 
 			else {
-				System.out.println("Next level");
 				nivel = nivel.nextLevel();
 				if (nivel != null)
 					Gui.getInstance().nextLevel();
 			}
 		} 
 		else {
-			System.out.println("Win");
 			win = true;
 		}
 	}
 
+	//Metodo para devolver el jugador del juego
 	public NaveJugador getJugador() {
 		return jugador;
 	}
 	
+	//Metodo para detectar colisiones entre las entidades que aparecen en el juego
 	public synchronized void detectarColisiones() {
 
 		for (int i = 0; i < entidades.size();i++) {
@@ -105,6 +105,8 @@ public class Juego {
 		}
 	}
 
+	//Metodo que se encarga de verificar si dos entidades colisionan, si colisionan cada una se visita
+	//a la otra mediante el metodo accept.
 	private void hayColision(Entidad e1, Entidad e2) {
 		Rectangle r1 = new Rectangle(e1.getPosX(),e1.getPosY(),32,32);
 		Rectangle r2 = new Rectangle(e2.getPosX(),e2.getPosY(),32,32);
@@ -114,28 +116,34 @@ public class Juego {
 		}
 	}
 
+	//Metodo para retornar si es game over
 	public boolean isGameOver() {
 		return this.gameOver;
 	}
 	
+	//Metodo que establece game over
 	public void GameOver() {
 		gameOver = true;
 	}
 
+	//Metodo que se encarga de mover las entidades del juego
 	public synchronized void moverEntidades() {
 		for (int i= 0; i< entidades.size();i++) {
 			entidades.get(i).mover();
 		}
 	}
 
+	//Metodo que devuelve verdades si hay entidades y falso en caso contrario
 	public boolean hayEntidades() {
 		return entidades.size()>0;
 	}
 
+	//Metodo para quitar una entidad del listado, la agrega a un listado auxiliar
 	public void quitarEntidad(Entidad entidad) {
 		entidadesAEliminar.add(entidad);
 	}
 
+	//Metodo para que las entidades disparen, cada entidad del juego acepta el visitor disparo
 	public synchronized void dispararEntidades() {
 		
 		for (int i = 0; i < entidades.size();i++) {
@@ -144,6 +152,10 @@ public class Juego {
 		}
 	}
 	
+	//Metodo para eliminar entidades. Por cada entidad se consulta si esta en juego, si no lo esta se agrega a un 
+	//listado auxiliar de entidades a eliminar, y se le envia el mensaje para que acepte el visitor remover. Para el jugador se 
+	//consulta si esta en juego, si no lo esta se agrega al listado, se le envia el mensaje que acepta el visitor remover, y se 
+	//avisa a la Gui que actualice la vida. Se recorre el listado de entidades a eliminar y se elimina de la grafica y del listado.
 	public synchronized void removerEntidades() {
 		for (int i = 0;i<entidades.size();i++) {
 			Entidad e = entidades.get(i);
@@ -163,6 +175,9 @@ public class Juego {
 		}
 	}
 	
+	//Metodo para activar el powerup Cuarentena. Se crea un objeto VisitorCuarentena, se recorre el listado de entidades
+	//y se les envia el visitor. Se crea un timer de 5 segundos, el cual pasados los 5 segundos se le avisa al visitor
+	//que ya termino la cuarentena, y se vuelve a visitar las entidades con el visitor.
 	public synchronized void activarCuarentena() {
 		VisitorPremioCuarentena vpc = new VisitorPremioCuarentena();
 		//Recorre la lista la primera vez, asignando movimiento nulo
@@ -190,7 +205,7 @@ public class Juego {
 		puntaje+=p;
 		Gui.getInstance().actualizarPuntaje();
 	}
-	
+
 	public void restarEnemigo() {
 		contadorEnemigos--;
 	}

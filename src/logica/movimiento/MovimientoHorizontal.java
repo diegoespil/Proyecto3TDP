@@ -2,6 +2,7 @@ package logica.movimiento;
 
 import javax.swing.JLabel;
 import logica.entidad.Entidad;
+import logica.juego.Juego;
 
 public class MovimientoHorizontal extends Movimiento {
 
@@ -12,11 +13,13 @@ public class MovimientoHorizontal extends Movimiento {
 		super(e, d);
 	}
 	
+	//Metodo que mueve el label de forma horizontal chequeando que no se pase de los limites del juego, y 
+	//actualizando la posicion de la entidad
 	public void mover() {
 		JLabel lbl = this.entidad.getGrafica().getLabel();
-		if ((direccion == 1 && lbl.getX()+lbl.getWidth() <= 600) || (direccion == -1 && lbl.getX() >= 0)) {
-			lbl.setBounds(lbl.getX() + direccion * this.entidad.getVelocidad(), lbl.getY() , lbl.getWidth(), lbl.getHeight());
-			this.entidad.setPosX(lbl.getX()+direccion*this.entidad.getVelocidad());
+		if ((direccion == 1 && lbl.getX()+lbl.getWidth() < Juego.WIDTH) || (direccion == -1 && lbl.getX() >= 0)) {
+			lbl.setBounds(lbl.getX() + (direccion * this.entidad.getVelocidad()), lbl.getY() , lbl.getWidth(), lbl.getHeight());
+			this.entidad.setPosX(lbl.getX()+(direccion*this.entidad.getVelocidad()));
 		}
 	}
 

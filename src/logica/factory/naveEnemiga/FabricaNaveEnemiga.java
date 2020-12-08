@@ -9,6 +9,8 @@ import logica.naves.NaveEnemiga;
 import logica.nivel.Nivel;
 import logica.premios.Premio;
 
+//Esta clase representa el patron FactoryMethod, permite crear distintas naves enemigas, y a su vez crear 
+//fabricas para los premios que estas entreguen
 public abstract class FabricaNaveEnemiga {
 
 	protected Nivel nivel; 
@@ -26,6 +28,8 @@ public abstract class FabricaNaveEnemiga {
 	
 	public abstract NaveEnemiga crearNaveEnemiga();
 	
+	//Metodo que permite crear Premios a traves de sus fabricas de manera aleatoria
+	//para asignarlos a las naves enemigas
 	protected Premio crearPremio() {
 		Random r = new Random();
 		int probabilidad = r.nextInt(101); 		

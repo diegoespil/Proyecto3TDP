@@ -4,6 +4,7 @@ import logica.nivel.Nivel;
 import logica.premios.Cuarentena;
 import logica.premios.Premio;
 
+//Esta clase representa la creacion de powerups de tipo Cuarentena
 public class FabricaCuarentena extends FabricaPremio {
 	
 	public FabricaCuarentena(Nivel n) {

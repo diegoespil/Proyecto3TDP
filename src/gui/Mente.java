@@ -20,11 +20,9 @@ public class Mente extends Thread {
 			}
 			juego.moverEntidades();
 			if (!juego.hayEntidades()) {
-				System.out.println("No hay entidades");
 				juego.inicializarEntidades();
 			}
 			if (juego.winGame()) {
-				System.out.println("winGame");
 				Gui.getInstance().win();
 			}
 			juego.detectarColisiones();

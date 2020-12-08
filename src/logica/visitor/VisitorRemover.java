@@ -15,23 +15,23 @@ public class VisitorRemover implements Visitor{
 	public VisitorRemover() {
 	}
 	
+	//Metodo que aumenta el puntaje cuando una nave enemiga muere, y suelta el powerup en su posicion
 	public void visitNaveEnemiga(NaveEnemiga nave) {
 		Juego j = Juego.getInstance();
 		j.aumentarPuntaje(nave.getPuntos());
 		j.restarEnemigo();
 		Premio powerUp = nave.getPowerUp();
 		if(powerUp!= null) {
-			System.out.println("Antes Posicion powerup x:"+powerUp.getPosX()+" y:"+powerUp.getPosY());
 			powerUp.setPosX(nave.getPosX());
 			powerUp.setPosY(nave.getPosY());
 			JLabel lbl = powerUp.getGrafica().getLabel();
 			lbl.setBounds(powerUp.getPosX(), powerUp.getPosY(), lbl.getWidth(), lbl.getHeight());
 			j.agregarEntidad(nave.getPowerUp());
-			System.out.println("Despues Posicion powerup x:"+powerUp.getPosX()+" y:"+powerUp.getPosY());
 			Gui.getInstance().agregarEntidad(powerUp.getGrafica().getLabel());
 		}	
 	}
 	
+	//Metodo que indica que perdio el juego si el jugador esta muerto
 	public void visitNaveJugador(NaveJugador nave) {
 		Juego.getInstance().GameOver();
 	}

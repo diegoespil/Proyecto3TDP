@@ -5,6 +5,7 @@ import logica.naves.NaveJugador;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorPremio;
 
+//Clase que representa el powerup Pocion, el cual su funcion es incrementar la vida del jugador.
 public class Pocion extends Precioso {
 
 		protected static final String[] graficos= {"/resources/img/powerUps/pw2.gif"};
@@ -21,9 +22,7 @@ public class Pocion extends Precioso {
 
 	@Override
 	public void activar(NaveJugador nj) {
-		System.out.println("Pocion :: vida original = "+nj.getVida());
 		nj.setVida(nj.getVida()+30);
-		System.out.println("Pocion :: vida despues = "+nj.getVida());
 	}
 
 	

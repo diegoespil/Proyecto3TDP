@@ -10,6 +10,7 @@ import logica.movimiento.MovimientoVerticalNulo;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveEnemiga;
 
+//Clase abstracta que representa una nave enemiga, tiene rango, un contador de disparos, un premio, y puntos.
 public abstract class NaveEnemiga extends Nave{
 	
 	protected int rango;
@@ -51,13 +52,13 @@ public abstract class NaveEnemiga extends Nave{
 		return detenido;
 	}
 	
+	//Metodo para actualizar si la nave se mueve o no en el juego
 	public void setDetenido(boolean det) {
 		detenido = det;
 		if (detenido == true) 
 			this.setMovimiento(new MovimientoVerticalNulo(this, MovimientoVerticalNulo.ABAJO));
 		else {
 			this.setMovimiento(new MovimientoVertical(this, MovimientoVertical.ABAJO));
-			//el setvida es para que se activen los MovimientoAcelerado donde corresponda
 			this.setVida(this.getVida());
 		}
 	}
@@ -66,6 +67,8 @@ public abstract class NaveEnemiga extends Nave{
 		v.visitNaveEnemiga(this);
 	}
 	
+	//Metodo para actualizar la posicion Y en el juego, si se pasa del limite del juego
+	//vuelve a aparecer por arriba
 	public void setPosY(int y) {
 		this.posY = y;
 		if (y >= Juego.HEIGHT) {

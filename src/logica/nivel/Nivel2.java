@@ -3,22 +3,20 @@ package logica.nivel;
 import java.util.LinkedList;
 import logica.entidad.Entidad;
 
+//Clase que representa el nivel 2 del juego, tiene 3 tandas.
 public class Nivel2 extends Nivel {
 
 	public Nivel2() {
-		super(30, 3);
+		super(3);
 	}
 
 	@Override
 	public Nivel nextLevel() {
 		return null;
 	}
-
-	@Override
-	public int getCantidadEnemigos() {
-		return this.enemigos;
-	}
-
+	
+	//Metodo que devuelve un listado con la tanda de naves enemigas. Si la cantidad de tandas que quedan 
+	//es una, entonces sale una tanda especial
 	@Override
 	public LinkedList<Entidad> getTanda() {
 		Tanda tanda = null;

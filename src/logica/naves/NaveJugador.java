@@ -5,6 +5,7 @@ import logica.movimiento.MovimientoHorizontal;
 import logica.visitor.Visitor;
 import logica.visitor.VisitorNaveJugador;
 
+//Clase que representa el jugador, tiene sus graficos, se le setean su arma, su movimiento, su visitor y su vida en 100.
 public class NaveJugador extends Nave{
 
 	private static final String subPath = "/jugador";
@@ -13,7 +14,7 @@ public class NaveJugador extends Nave{
 			path+subPath+"/jugadorRight.gif"};
 
 	public NaveJugador(int x, int y) {
-		super(x, y, graficos,9,new ArmaJugador(30,15));
+		super(x, y, graficos,9,new ArmaJugador());
 		setMovimiento( new MovimientoHorizontal(this,1) );
 		setVisitor(new VisitorNaveJugador(this));
 		setVida(100);

@@ -2,6 +2,8 @@ package logica.naves;
 
 import logica.arma.ArmaEnemigaGamma;
 
+
+//Clase que representa una nave enemiga, tiene sus graficos, esta nave es la mas resistente de todas.
 public class Gamma extends NaveEnemiga {
 	
 
