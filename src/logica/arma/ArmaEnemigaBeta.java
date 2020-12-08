@@ -8,7 +8,7 @@ import logica.proyectil.ProyectilEnemigoBeta;
 public class ArmaEnemigaBeta extends ArmaEnemiga{
 
 	public ArmaEnemigaBeta() {
-		super(20, 30, 5);
+		super(20, 15, 5);
 	}
 
 	//Metodo que crea un proyectil, tiene un control a partir de la cantidad de disparos permitido

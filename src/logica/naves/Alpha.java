@@ -13,7 +13,7 @@ public class Alpha extends NaveEnemiga {
 			path+subPath+"/naveAlphaRight.gif"};
 	
 	public Alpha(int x, int y){
-		super(x, y,5,graficos,new ArmaEnemigaAlpha(),20,15,5);
+		super(x, y,5,graficos,new ArmaEnemigaAlpha(),20,5);
 		setVida(50);
 	}
 	

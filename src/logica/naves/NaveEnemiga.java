@@ -20,7 +20,7 @@ public abstract class NaveEnemiga extends Nave{
 	protected Premio powerUp;
 	protected boolean detenido;
 
-	public NaveEnemiga(int x, int y, int vel, String [] graficos,Arma arma, int puntos, int danio,int retardo) {
+	public NaveEnemiga(int x, int y, int vel, String [] graficos,Arma arma, int puntos,int retardo) {
 		super(x, y, graficos, vel,arma);
 		setMovimiento(new MovimientoVertical(this,MovimientoVertical.ABAJO));
 		setVisitor(new VisitorNaveEnemiga(this));
