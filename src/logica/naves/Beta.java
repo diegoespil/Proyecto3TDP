@@ -10,7 +10,7 @@ public class Beta extends NaveEnemiga {
 			path+subPath+"/naveBetaRight.gif"};
 	
 	public Beta(int x, int y) {
-		super(x, y, 5,graficos,new ArmaEnemigaBeta(),30,30,5);
+		super(x, y, 5,graficos,new ArmaEnemigaBeta(),30,5);
 		setVida(100);
 	}
 }
