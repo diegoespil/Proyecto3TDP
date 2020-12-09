@@ -5,10 +5,11 @@ import logica.juego.Juego;
 public class Mente extends Thread {
 	
 	private Juego juego;
-	private boolean endGame = false;
+	private boolean endGame;
 	
 	public Mente() {
 		juego = Juego.getInstance();
+		this.endGame = false;
 	}
 	
 	public void run() {
@@ -35,5 +36,4 @@ public class Mente extends Thread {
 		}
 		
 	}
-
 }

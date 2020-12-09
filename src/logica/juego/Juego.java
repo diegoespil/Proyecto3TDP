@@ -20,13 +20,12 @@ import logica.visitor.VisitorRemover;
 //y se mantiene un listado de todas las entidades. Ademas el juego tiene dos Visitor, los cuales son utilizados para que las 
 //naves enemigas disparen y otro para eliminar entidades del juego.
 public class Juego {
-	
-	private Gui gui;
+
 	private Nivel nivel;
 	private LinkedList<Entidad> entidades;
 	private LinkedList<Entidad> entidadesAEliminar;
 	private NaveJugador jugador;
-	private boolean gameOver,win = false;
+	private boolean gameOver,win;
 	private int puntaje = 0;
 	private int contadorEnemigos;
 	private Visitor visitorRemover, visitorDisparo;
@@ -37,27 +36,33 @@ public class Juego {
 	public static final int HEIGHT = 600;
 	
 	private Juego() {
-		this.gui = Gui.getInstance();
+		this.gameOver= false;
+		this.win = false;
 		this.nivel = new Nivel1();
 		this.jugador = new NaveJugador(WIDTH/2, HEIGHT-42);
 		this.entidades = new LinkedList<Entidad>();
 		this.entidadesAEliminar = new LinkedList<Entidad>();
-		agregarJugador();
 		contadorEnemigos = 0;
 		visitorRemover = new VisitorRemover();
 		visitorDisparo = new VisitorDisparo();
 	}	
 
 	//Este metodo permite obtener una unica instancia de esta clase
-	public static Juego getInstance() {
-		if (instance == null)
+	public static synchronized Juego getInstance() {
+		if (instance == null) {
 			instance = new Juego();
+		}
+			
 		return instance;
+	}
+	
+	public void reiniciar() {
+		instance = null;
 	}
 
 	//Metodo para agregar el jugador a la Gui
-	private void agregarJugador() {
-		gui.agregarEntidad(jugador.getGrafica().getLabel());
+	public void agregarJugador() {
+		Gui.getInstance().agregarEntidad(jugador.getGrafica().getLabel());
 	}
 	
 	//Metodo para agregar una entidad a la lista de entidades
@@ -73,7 +78,7 @@ public class Juego {
 			if (naves != null) {	
 				for (Entidad e: naves) {
 					entidades.add(e);
-					gui.agregarEntidad(e.getGrafica());
+					Gui.getInstance().agregarEntidad(e.getGrafica());
 					contadorEnemigos++;
 				}
 			} 
@@ -170,7 +175,7 @@ public class Juego {
 			Gui.getInstance().updateVida(0);
 		}
 		for (Entidad e: entidadesAEliminar) {
-			gui.remove(e.getGrafica().getLabel());
+			Gui.getInstance().remove(e.getGrafica().getLabel());
 			entidades.remove(e);
 		}
 	}
