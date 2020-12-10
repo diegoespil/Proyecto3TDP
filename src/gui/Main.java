@@ -16,6 +16,7 @@ public class Main {
 		Juego.getInstance().reiniciar();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void detenerMente() {
 		mente.stop();
 	}

@@ -1,11 +1,9 @@
 package gui;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,7 +19,6 @@ import javax.swing.JProgressBar;
 //Esta clase se encarga de mostrar graficamente el juego, aplica el patron de diseño Singleton
 public class Gui extends JFrame{
 
-	private static Gui frame;
 	private static final long serialVersionUID = 1L;
 	private JLayeredPane contentPane;
 	private Mente mente;
@@ -31,24 +28,6 @@ public class Gui extends JFrame{
 	private boolean win = false;
 	private JProgressBar progressBar;
 	private KeyAdapter keyAdapter;
-
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					
-//					frame = Gui.getInstance();
-//					frame.setVisible(true);
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the frame.
@@ -64,11 +43,7 @@ public class Gui extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBounds(0,0,600,630);
 		contentPane.setLayout(null);
-		
-//		iniciarJuego();
-//		mente = new Mente();
-//		mente.start();
-		
+
 	    ImageIcon icon = new ImageIcon(this.getClass().getResource("/resources/img/fondo/fondo.gif"));
 	    fondo = new JLabel(icon);
 	    fondo.setBounds(0,0,600,617);
@@ -328,7 +303,6 @@ public class Gui extends JFrame{
 	}
 
 	//Metodo que indica graficamente que gano el juego
-	@SuppressWarnings("deprecation")
 	public void win() {
 		this.win = true;
 		this.removeKeyListener(keyAdapter);
