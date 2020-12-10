@@ -4,7 +4,7 @@ Las estrategias concretas implementan mover() según corresponda para la Entidad
 
 En el thread que maneja el juego:
    cada cierta cantidad de tiempo
-      para cada Entidad e en Entidades
+      para cada Entidad e en la lista entidades
          e.mover()
     
 En la clase Gui habrá un oyente para las teclas que mueven al jugador, de la forma:
