@@ -340,7 +340,7 @@ public class Gui extends JFrame{
 		contentPane.add(lblExit, JLayeredPane.DRAG_LAYER);
 		this.validate();
 		this.repaint();
-		mente.stop();
+		Main.detenerMente();
 		
 	}
 }
