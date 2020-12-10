@@ -4,10 +4,8 @@ Las estrategias concretas implementan mover() según corresponda para la Entidad
 
 En el thread que maneja el juego:
    cada cierta cantidad de tiempo
-      para cada NaveInfectada ni en ListaEnemigos
-         ni.mover()
-      para cada premio pr presente en el mapa
-         pr.mover()
+      para cada Entidad e en Entidades
+         e.mover()
     
 En la clase Gui habrá un oyente para las teclas que mueven al jugador, de la forma:
    jugador.getEstrategiaMovimiento.setDireccion <- direccion correspondiente a tecla presionada
